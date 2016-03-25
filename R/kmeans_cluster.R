@@ -42,7 +42,7 @@
 #'
 #' assign_cluster(myfit2) %>%
 #'     summary()
-kmeans_cluster <- function(x, k = hclustext::approx_k(get_dtm(x)), ...){
+kmeans_cluster <- function(x, k = clustext::approx_k(get_dtm(x)), ...){
 
     UseMethod("kmeans_cluster")
 
