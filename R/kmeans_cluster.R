@@ -52,7 +52,7 @@ kmeans_cluster <- function(x, k = clustext::approx_k(get_dtm(x)), ...){
 #' @export
 #' @rdname kmeans_cluster
 #' @method kmeans_cluster data_store
-kmeans_cluster.data_store <- function(x, k = hclustext::approx_k(get_dtm(x)), ...){
+kmeans_cluster.data_store <- function(x, k = clustext::approx_k(get_dtm(x)), ...){
 
 
     fit <- stats::kmeans(x[["dtm"]], centers=k)
