@@ -112,10 +112,11 @@ data_store <- function(text, doc.names, min.term.freq = 1, min.doc.len = 1,
 #' @method print data_store
 #' @export
 print.data_store <- function(x, ...){
+    cat(sprintf("<<Data Store (documents: %s, terms: %s)>>\n", pn2(nrow(x[["dtm"]])), pn2(ncol(x[["dtm"]]))  ))
     cat(sprintf("Text Elements      : %s\n", pn2(length(x[["text"]]))  ))
     cat(sprintf("Elements Removed   : %s\n", pn2(length(x[["removed"]])) ))
-    cat(sprintf("Documents          : %s\n", pn2(nrow(x[["dtm"]]))  ))
-    cat(sprintf("Terms              : %s\n", pn2(ncol(x[["dtm"]]))  ))
+    #cat(sprintf("Documents          : %s\n", pn2(nrow(x[["dtm"]]))  ))
+    #cat(sprintf("Terms              : %s\n", pn2(ncol(x[["dtm"]]))  ))
     cat(sprintf("Non-/sparse entries: %d/%.0f\n", x[["n.nonsparse"]],
         prod(dim(x[["dtm"]])) - x[["n.nonsparse"]]))
     if (!prod(dim(x))) {
@@ -125,6 +126,7 @@ print.data_store <- function(x, ...){
     }
     cat(sprintf("Sparsity           : %s%%\n", sparsity))
     cat(sprintf("Maximal term length: %s\n", max(nchar(colnames(x[["dtm"]])))))
+    cat(sprintf("Minimum term length: %s\n", min(nchar(colnames(x[["dtm"]])))))
 }
 
 
