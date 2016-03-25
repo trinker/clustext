@@ -4,13 +4,15 @@
 \alias{summary.assign_cluster}
 \title{Summary of an assign_cluster Object}
 \usage{
-\method{summary}{assign_cluster}(object, plot = TRUE, ...)
+\method{summary}{assign_cluster}(object, plot = TRUE, print = TRUE, ...)
 }
 \arguments{
 \item{object}{An assign_cluster object.}
 
 \item{plot}{logical.  If \code{TRUE} an accompanying bar plot is produced a
 well.}
+
+\item{print}{logical.  If \code{TRUE} data.frame counts are printed.}
 
 \item{\ldots}{ignored.}
 }

@@ -160,14 +160,15 @@ print.assign_cluster <- function(x, ...){
 #' @param object An assign_cluster object.
 #' @param plot logical.  If \code{TRUE} an accompanying bar plot is produced a
 #' well.
+#' @param print logical.  If \code{TRUE} data.frame counts are printed.
 #' @param \ldots ignored.
 #' @method summary assign_cluster
 #' @export
-summary.assign_cluster <- function(object, plot = TRUE, ...){
+summary.assign_cluster <- function(object, plot = TRUE, print = TRUE, ...){
     count <- NULL
     out <- textshape::bind_table(table(as.integer(object)), "cluster", "count")
     if (isTRUE(plot)) print(termco::plot_counts(as.integer(object), item.name = "Cluster"))
-    dplyr::arrange(as.data.frame(out), dplyr::desc(count))
+    if (isTRUE(print)) dplyr::arrange(as.data.frame(out), dplyr::desc(count))
 }
 
 
