@@ -4,6 +4,7 @@
 \alias{assign_cluster}
 \alias{assign_cluster.hierarchical_cluster}
 \alias{assign_cluster.kmeans_cluster}
+\alias{assign_cluster.nmf_cluster}
 \title{Assign Clusters to Documents/Text Elements}
 \usage{
 assign_cluster(x, k = approx_k(get_dtm(x)), h = NULL, ...)
@@ -12,6 +13,8 @@ assign_cluster(x, k = approx_k(get_dtm(x)), h = NULL, ...)
   h = NULL, ...)
 
 \method{assign_cluster}{kmeans_cluster}(x, ...)
+
+\method{assign_cluster}{nmf_cluster}(x, ...)
 }
 \arguments{
 \item{x}{a \code{xxx_cluster} object.}

@@ -26,3 +26,17 @@ NULL
 #' @usage data(presidential_debates_2012)
 #' @format A data frame with 2912 rows and 4 variables
 NULL
+
+
+#' Topic Assignments
+#' 
+#' A dataset containing a list of topic assignments by various clustering 
+#' algorithms.  Assignments correspond to the rows (minus empty rows) of the 
+#' \code{presidential_debates_2012} data set.
+#' 
+#' @docType data 
+#' @keywords datasets 
+#' @name assignments 
+#' @usage data(assignments) 
+#' @format A list with 3 elements 
+NULL 

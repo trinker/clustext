@@ -4,10 +4,8 @@
 #' calculated the tf-idf (see \code{\link[tm]{weightTfIdf}}) is applied to the
 #' \code{\link[tm]{DocumentTermMatrix}}.
 #'
-#' @param x A data type (e.g., \code{\link[tm]{DocumentTermMatrix}} or
-#' \code{\link[tm]{TermDocumentMatrix}}).
-#' @param k The number of clusters.  Defaults to use \code{approx_k} of the
-#' \code{\link[tm]{DocumentTermMatrix}} produced by \code{data_storage}.
+#' @param x A data store object (see \code{\link[clustext]{data_store}}).
+#' @param k The number of clusters.  
 #' @param \ldots Other arguments passed to \code{\link[stats]{kmeans}}.
 #' @return Returns an object of class \code{"kmeans"}.
 #' @export
@@ -20,8 +18,6 @@
 #'     data_store(dialogue, paste(person, time, sep = "_"))
 #' )
 #'
-#' ## K predicted
-#' kmeans_cluster(x)
 #'
 #' ## 6 topic model
 #' kmeans_cluster(x, k=6)
@@ -42,7 +38,7 @@
 #'
 #' assign_cluster(myfit2) %>%
 #'     summary()
-kmeans_cluster <- function(x, k = clustext::approx_k(get_dtm(x)), ...){
+kmeans_cluster <- function(x, k, ...){
 
     UseMethod("kmeans_cluster")
 
@@ -52,7 +48,7 @@ kmeans_cluster <- function(x, k = clustext::approx_k(get_dtm(x)), ...){
 #' @export
 #' @rdname kmeans_cluster
 #' @method kmeans_cluster data_store
-kmeans_cluster.data_store <- function(x, k = clustext::approx_k(get_dtm(x)), ...){
+kmeans_cluster.data_store <- function(x, k, ...){
 
 
     fit <- stats::kmeans(x[["dtm"]], centers=k)

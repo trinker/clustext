@@ -5,17 +5,14 @@
 \alias{kmeans_cluster.data_store}
 \title{Fit a Kmeans Cluster}
 \usage{
-kmeans_cluster(x, k = hclustext::approx_k(get_dtm(x)), ...)
+kmeans_cluster(x, k, ...)
 
-\method{kmeans_cluster}{data_store}(x, k = hclustext::approx_k(get_dtm(x)),
-  ...)
+\method{kmeans_cluster}{data_store}(x, k, ...)
 }
 \arguments{
-\item{x}{A data type (e.g., \code{\link[tm]{DocumentTermMatrix}} or
-\code{\link[tm]{TermDocumentMatrix}}).}
+\item{x}{A data store object (see \code{\link[clustext]{data_store}}).}
 
-\item{k}{The number of clusters.  Defaults to use \code{approx_k} of the
-\code{\link[tm]{DocumentTermMatrix}} produced by \code{data_storage}.}
+\item{k}{The number of clusters.}
 
 \item{\ldots}{Other arguments passed to \code{\link[stats]{kmeans}}.}
 }
@@ -35,8 +32,6 @@ x <- with(
     data_store(dialogue, paste(person, time, sep = "_"))
 )
 
-## K predicted
-kmeans_cluster(x)
 
 ## 6 topic model
 kmeans_cluster(x, k=6)

@@ -16,3 +16,5 @@ rguid <- function(n=20){
     paste(sample(c(LETTERS, letters, 0:9), n, TRUE), collapse="")
 }
 
+
+

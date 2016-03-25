@@ -43,4 +43,12 @@ get_dtm.kmeans_cluster <- function(x, ...){
 }
 
 
+#' @export
+#' @rdname get_dtm
+#' @method get_dtm nmf_cluster
+get_dtm.nmf_cluster <- function(x, ...){
+    get_dtm(attributes(x)[["text_data_store"]][["data"]])
+}
+
+
 

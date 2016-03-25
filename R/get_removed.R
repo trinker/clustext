@@ -34,6 +34,13 @@ get_removed.kmeans_cluster <- function(x, ...){
 }
 
 
+#' @export
+#' @rdname get_removed
+#' @method get_removed nmf_cluster
+get_removed.nmf_cluster <- function(x, ...){
+    get_removed(attributes(x)[["text_data_store"]][["data"]])
+}
+
 
 #' @export
 #' @rdname get_removed

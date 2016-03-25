@@ -112,6 +112,7 @@ data_store <- function(text, doc.names, min.term.freq = 1, min.doc.len = 1,
 #' @method print data_store
 #' @export
 print.data_store <- function(x, ...){
+
     cat(sprintf("<<Data Store (documents: %s, terms: %s)>>\n", pn2(nrow(x[["dtm"]])), pn2(ncol(x[["dtm"]]))  ))
     cat(sprintf("Text Elements      : %s\n", pn2(length(x[["text"]]))  ))
     cat(sprintf("Elements Removed   : %s\n", pn2(length(x[["removed"]])) ))

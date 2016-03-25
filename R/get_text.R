@@ -38,6 +38,16 @@ get_text.kmeans_cluster <- function(x, ...){
 
 #' @export
 #' @rdname get_text
+#' @method get_text nmf_cluster
+get_text.nmf_cluster <- function(x, ...){
+    get_text(attributes(x)[["text_data_store"]][["data"]])
+}
+
+
+
+
+#' @export
+#' @rdname get_text
 #' @method get_text data_store
 get_text.data_store <- function(x, ...){
     x[["text"]]

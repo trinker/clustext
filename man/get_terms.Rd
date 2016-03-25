@@ -4,6 +4,7 @@
 \alias{get_terms}
 \alias{get_terms.assign_cluster_hierarchical}
 \alias{get_terms.assign_cluster_kmeans}
+\alias{get_terms.assign_cluster_nmf}
 \title{Get Terms Based on Cluster Assignment in \code{assign_cluster}}
 \usage{
 get_terms(x, min.weight = 0.6, nrow = NULL, ...)
@@ -12,6 +13,9 @@ get_terms(x, min.weight = 0.6, nrow = NULL, ...)
   nrow = NULL, ...)
 
 \method{get_terms}{assign_cluster_kmeans}(x, min.weight = 0.6, nrow = NULL,
+  ...)
+
+\method{get_terms}{assign_cluster_nmf}(x, min.weight = 0.6, nrow = NULL,
   ...)
 }
 \arguments{

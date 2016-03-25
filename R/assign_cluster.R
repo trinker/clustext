@@ -90,6 +90,7 @@ assign_cluster.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)), h =
 
     attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
     attributes(out)[["model"]] <- x
+    attributes(out)[["algorithm"]] <- 'hierarchical'    
     attributes(out)[["join"]] <- function(x) {
 
             if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
@@ -121,6 +122,7 @@ assign_cluster.kmeans_cluster <- function(x, ...){
 
     attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
     attributes(out)[["model"]] <- x
+    attributes(out)[["algorithm"]] <- 'kmeans'    
     attributes(out)[["join"]] <- function(x) {
 
         if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
@@ -138,6 +140,37 @@ assign_cluster.kmeans_cluster <- function(x, ...){
 }
 
 
+#' @export
+#' @rdname assign_cluster
+#' @method assign_cluster nmf_cluster
+assign_cluster.nmf_cluster <- function(x, ...){
+
+    out <- unlist(apply(x[['W']], 1, which.max))
+
+    n <- id_temporary <- NULL
+    orig <- attributes(x)[['text_data_store']][['data']]
+    lens <- length(orig[['text']]) + length(orig[['removed']])
+    
+    class(out) <- c("assign_cluster_nmf","assign_cluster", class(out))
+    
+    attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
+    attributes(out)[["model"]] <- x
+    attributes(out)[["algorithm"]] <- 'nmf'    
+    attributes(out)[["join"]] <- function(x) {
+        
+        if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
+        
+        dplyr::select(
+            dplyr::left_join(
+                dplyr::mutate(x, id_temporary = as.character(1:n())),
+                dplyr::tbl_df(textshape::bind_vector(out, 'id_temporary', 'cluster') )
+            ),
+            -id_temporary
+        )
+    }
+    out
+    
+}
 
 
 #' Prints an assign_cluster Object

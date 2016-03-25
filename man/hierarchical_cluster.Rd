@@ -10,8 +10,7 @@ hierarchical_cluster(x, method = "ward.D2", ...)
 \method{hierarchical_cluster}{data_store}(x, method = "ward.D", ...)
 }
 \arguments{
-\item{x}{A data type (e.g., \code{\link[tm]{DocumentTermMatrix}} or
-\code{\link[tm]{TermDocumentMatrix}}).}
+\item{x}{A data store object (see \code{\link[clustext]{data_store}}).}
 
 \item{method}{The agglomeration method to be used. This must be (an
 unambiguous abbreviation of) one of \code{"single"}, \code{"complete"},

@@ -9,8 +9,7 @@
 #' \code{\link[fastcluster]{hclust}} is used to quickly calculate the fit.
 #' Essentially, this is a wrapper function optimized for clustering text data.
 #'
-#' @param x A data type (e.g., \code{\link[tm]{DocumentTermMatrix}} or
-#' \code{\link[tm]{TermDocumentMatrix}}).
+#' @param x A data store object (see \code{\link[clustext]{data_store}}).
 #' @param method The agglomeration method to be used. This must be (an
 #' unambiguous abbreviation of) one of \code{"single"}, \code{"complete"},
 #' \code{"average"}, \code{"mcquitty"}, \code{"ward.D"}, \code{"ward.D2"},

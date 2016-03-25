@@ -6,8 +6,8 @@ Authors@R: c(person("Tyler", "Rinker", email =
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>
 Description: Optimized, consistent tools for clustering text data.
 Depends: R (>= 3.2.3)
-Imports: fastcluster, gofastr, graphics, slam, stats, termco,
-        textshape, tm, dplyr
+Imports:  dplyr, fastcluster, gofastr, graphics, mclust, rNMF, slam, stats, 
+        termco, textshape, tm
 Suggests: testthat
 Date: 2016-03-24
 License: GPL-2
