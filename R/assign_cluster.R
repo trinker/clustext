@@ -153,7 +153,7 @@ assign_cluster.skmeans_cluster <- function(x, ...){
     orig <- attributes(x)[['text_data_store']][['data']]
     lens <- length(orig[['text']]) + length(orig[['removed']])
 
-    class(out) <- c("assign_cluster_kmeans","assign_cluster", class(out))
+    class(out) <- c("assign_cluster_skmeans","assign_cluster", class(out))
 
     attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
     attributes(out)[["model"]] <- x

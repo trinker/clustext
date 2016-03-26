@@ -79,9 +79,6 @@ get_terms.assign_cluster_hierarchical <- function(x, min.weight = .6, nrow = NUL
     out2 <- lapply(out, function(x) {
         rownames(x) <- NULL
         x <- dplyr::filter(x, weight >= min.weight)
-        if (!is.null(nrow)) {
-            x <- x[1:nrow, ]
-        }
         x <- dplyr::filter(x, !is.na(term))
 
         if (nrow(x) == 0) return(NULL)
@@ -126,9 +123,7 @@ get_terms.assign_cluster_kmeans <- function(x, min.weight = .6, nrow = NULL, ...
     out2 <- lapply(out, function(x) {
         rownames(x) <- NULL
         x <- dplyr::filter(x, weight >= min.weight)
-        if (!is.null(nrow)) {
-            x <- x[1:nrow, ]
-        }
+
         x <- dplyr::filter(x, !is.na(term))
 
         if (nrow(x) == 0) return(NULL)
@@ -150,12 +145,38 @@ get_terms.assign_cluster_kmeans <- function(x, min.weight = .6, nrow = NULL, ...
 
 #' @export
 #' @rdname get_terms
-#' @method get_terms assign_cluster_kmeans
+#' @method get_terms assign_cluster_skmeans
 get_terms.assign_cluster_skmeans <- function(x, min.weight = .6, nrow = NULL, ...){
 
+    assignment <- x
+    desc <- topic <- n <- term <- weight <- NULL
+    dat <- attributes(x)[["data_store"]][["data"]][['dtm']]
+    clusters <-split(names(x), x)
 
-    get_terms.assign_cluster_hierarchical(x = x, min.weight = min.weight, nrow = nrow, ...)
+    out <- stats::setNames(lapply(clusters, function(y){
+        vals <- min_max(sort(slam::col_sums(dat[y,]), decreasing=TRUE))
+        as.data.frame(textshape::bind_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
+    }), names(clusters))
 
+
+    out2 <- lapply(out, function(x) {
+        rownames(x) <- NULL
+        x <- dplyr::filter(x, weight >= min.weight)
+        x <- dplyr::filter(x, !is.na(term))
+
+        if (nrow(x) == 0) return(NULL)
+        x
+    })
+
+    if (!is.null(nrow)) {
+        out2 <- lapply(out2, function(x){
+            if (is.null(x) || nrow(x) <= nrow) return(x)
+            x[1:nrow]
+        })
+    }
+    class(out2) <- c("get_terms", class(out2))
+    attributes(out2)[['assignment']] <- assignment
+    out2
 }
 
 
@@ -180,9 +201,6 @@ get_terms.assign_cluster_nmf <- function(x, min.weight = .6, nrow = NULL, ...){
     out2 <- lapply(out, function(x) {
         rownames(x) <- NULL
         x <- dplyr::filter(x, weight >= min.weight)
-        if (!is.null(nrow)) {
-            x <- x[1:nrow, ]
-        }
         x <- dplyr::filter(x, !is.na(term))
 
         if (nrow(x) == 0) return(NULL)

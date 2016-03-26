@@ -16,7 +16,7 @@ get_terms(x, min.weight = 0.6, nrow = NULL, ...)
 \method{get_terms}{assign_cluster_kmeans}(x, min.weight = 0.6, nrow = NULL,
   ...)
 
-\method{get_terms}{assign_cluster_kmeans}(x, min.weight = 0.6, nrow = NULL,
+\method{get_terms}{assign_cluster_skmeans}(x, min.weight = 0.6, nrow = NULL,
   ...)
 
 \method{get_terms}{assign_cluster_nmf}(x, min.weight = 0.6, nrow = NULL,
