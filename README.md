@@ -488,7 +488,7 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 5.794089 secs
+    ## Time difference of 5.081183 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
@@ -512,88 +512,88 @@ texts and terms) to a random 5 clusters for the sake of space.
     ## 12      46    23
 
     ## Split Text into Clusters
-    set.seed(3); inds <- sort(sample.int(100, 5))
+    set.seed(5); inds <- sort(sample.int(100, 5))
 
     get_text(ca2)[inds] %>%
         lapply(head, 10)
 
-    ## $`17`
-    ##  [1] "But my experience my experience the private sector typically is able to provide a better product at a lower cost."                                                                                     
-    ##  [2] "Well, in part, it comes, again, from my experience."                                                                                                                                                   
-    ##  [3] "Which is which is my experience as a governor is if I come in and and lay down a piece of legislation and say, It's my way or the highway, I don't get a lot done."                                    
-    ##  [4] "And by the way, I've had that experience."                                                                                                                                                             
-    ##  [5] "But, ultimately, part of being principled, part of being a leader is, A, being able to describe exactly what it is that you intend to do, not just saying, I'll sit down, but you have to have a plan."
-    ##  [6] "And so part of leadership and governing is both saying what it is that you are for, but also being willing to say no to some things."                                                                  
-    ##  [7] "I've got three part time jobs."                                                                                                                                                                        
-    ##  [8] "So he's got the oil and gas part, but he doesn't have the clean energy part."                                                                                                                          
-    ##  [9] "That's part that's part one."                                                                                                                                                                          
-    ## [10] "That's part of what I'm fighting for as president of the United States."                                                                                                                               
+    ## $`11`
+    ## [1] "Yeah, we're going to yeah, I want to get to it."
+    ## [2] "And do you yeah."                               
+    ## [3] "Yeah, you bet."                                 
+    ## [4] "Yeah."                                          
     ## 
-    ## $`32`
-    ##  [1] "It's hurt the housing market because Dodd Frank didn't anticipate putting in place the kinds of regulations you have to have."                         
-    ##  [2] "And we face this deficit could crush the future generations."                                                                                          
-    ##  [3] "Jeremy, first of all, your future is bright."                                                                                                          
-    ##  [4] "And there are a bunch of things we can do to make sure your future is bright."                                                                         
-    ##  [5] "We do those things, not only is your future going to be bright but America's future is going to bright as well."                                       
-    ##  [6] "We've also got to look to the future."                                                                                                                 
-    ##  [7] "It's critical to our future."                                                                                                                          
-    ##  [8] "I'm not that optimistic as I was in two thousand twelve."                                                                                              
-    ##  [9] "It's about who can get the middle class in this country a bright and prosperous future and assure our kids the kind of hope and optimism they deserve."
-    ## [10] "I want one hundred percent of the American people to have a bright and prosperous future."                                                             
+    ## $`21`
+    ##  [1] "Regulation is essential."                                                                                                                                 
+    ##  [2] "You can't have a free market work if you don't have regulation."                                                                                          
+    ##  [3] "Every free economy has good regulation."                                                                                                                  
+    ##  [4] "You have to have regulation."                                                                                                                             
+    ##  [5] "Now, it wasn't just on Wall Street."                                                                                                                      
+    ##  [6] "We stepped in and had the toughest reforms on Wall Street since the one thousand nine hundred thirtys."                                                   
+    ##  [7] "And so the question is: Does anybody out there think that the big problem we had is that there was too much oversight and regulation of Wall Street?"     
+    ##  [8] "Look, we have to have regulation on Wall Street."                                                                                                         
+    ##  [9] "That's why I'd have regulation."                                                                                                                          
+    ## [10] "I committed that I would rein in the excesses of Wall Street, and we passed the toughest Wall Street reforms since the one thousand nine hundred thirtys."
     ## 
-    ## $`38`
-    ##  [1] "I just don't know how the president could have come into office, facing twenty three million people out of work, rising unemployment, an economic crisis at the at the kitchen table, and spend his energy and passion for two years fighting for Obamacare instead of fighting for jobs for the American people."
-    ##  [2] "And the proof of that is twenty three million people out of work."                                                                                                                                                                                                                                                
-    ##  [3] "We've got we've got barely have three minutes left."                                                                                                                                                                                                                                                              
-    ##  [4] "So we only have three three minutes left in the in the debate before we go to your closing statements."                                                                                                                                                                                                           
-    ##  [5] "Well what you're seeing in this country is twenty three million people struggling to find a job."                                                                                                                                                                                                                 
-    ##  [6] "There are three."                                                                                                                                                                                                                                                                                                 
-    ##  [7] "An economy that has twenty three million people looking for work is not a strong economy."                                                                                                                                                                                                                        
-    ##  [8] "Median income is down dollar four thousand three hundred a family and twenty three million Americans out of work."                                                                                                                                                                                                
-    ##  [9] "We don't have to settle for twenty three million people struggling to find a good job."                                                                                                                                                                                                                           
-    ## [10] "You can't have twenty three million people struggling to get a job."                                                                                                                                                                                                                                              
+    ## $`28`
+    ##  [1] "We said you've got banks, you've got to raise your capital requirements."               
+    ##  [2] "Well, actually it's it's it's a lengthy description."                                   
+    ##  [3] "Well, actually Governor, that isn't what your plan does."                               
+    ##  [4] "Number two, we've got to make sure that we have the best education system in the world."
+    ##  [5] "We've got to reduce our deficit, but we've got to do it in a balanced way."             
+    ##  [6] "I got to I got to move you on."                                                         
+    ##  [7] "He actually got|"                                                                       
+    ##  [8] "He actually got the first question."                                                    
+    ##  [9] "Governor Romney, I'm sure you've got a reply there."                                    
+    ## [10] "I've got to say|"                                                                       
     ## 
-    ## $`58`
-    ## [1] "And the key to great schools, great teachers."
-    ## [2] "You've done a great job."                     
-    ## [3] "You're doing great."                          
-    ## [4] "Great."                                       
-    ## [5] "Great to see you."                            
+    ## $`68`
+    ## [1] "That's how we went after Al Qaida and bin Laden."                                                 
+    ## [2] "I said that we'd go after al Qaeda and bin Laden, we have."                                       
+    ## [3] "I congratulate him on on taking out Osama bin Laden and going after the leadership in al Qaeda."  
+    ## [4] "When it comes to going after Osama bin Laden, you said, well, any president would make that call."
+    ## [5] "And she said to me, You know, by finally getting bin Laden, that brought some closure to me."     
+    ## [6] "We had to go in there to get Osama bin Laden."                                                    
+    ## [7] "Well, keep in mind our strategy wasn't just going after bin Laden."                               
     ## 
-    ## $`80`
-    ## [1] "And the president's right in terms of the additional oil production, but none of it came on federal land."                            
-    ## [2] "As a matter of fact, oil production is down fourteen percent this year on federal land, and gas production was down nine percent."    
-    ## [3] "Oil production is up, natural gas production is up, and, most importantly, we're also starting to build cars that are more efficient."
-    ## [4] "And production on private on government land."                                                                                        
-    ## [5] "Production is up."                                                                                                                    
-    ## [6] "Production on government land of oil is down fourteen percent."                                                                       
-    ## [7] "And production on gas."                                                                                                               
-    ## [8] "I'm all for oil production."
+    ## $`90`
+    ##  [1] "And finally, championing small business."                                                                                                                                              
+    ##  [2] "And then let's take the last one, championing small business."                                                                                                                         
+    ##  [3] "I came through small business."                                                                                                                                                        
+    ##  [4] "I understand how hard it is to start a small business."                                                                                                                                
+    ##  [5] "I want to keep their taxes down on small business."                                                                                                                                    
+    ##  [6] "So if you're starting a business, where would you rather start it?"                                                                                                                    
+    ##  [7] "But, of course, if you're a small business or a mom and pop business or a big business starting up here, you've got to pay even the reduced rate that Governor Romney's talking about."
+    ##  [8] "And finally, number five, we've got to champion small business."                                                                                                                       
+    ##  [9] "Small business is where jobs come from."                                                                                                                                               
+    ## [10] "That's not the kind of small business promotion we need."
 
     ## Get Associated Terms
-    get_terms(ca2, term.cutoff = .07)[inds]
+    get_terms(ca2, .4)[inds]
 
-    ## $`17`
-    ##         term    weight
-    ## 1     israel 1.0000000
-    ## 2       part 0.9239009
-    ## 3 experience 0.7560640
+    ## $`11`
+    ##   term weight
+    ## 1 yeah      1
     ## 
-    ## $`32`
-    ##     term weight
-    ## 1 future      1
-    ## 
-    ## $`38`
-    ##    term weight
-    ## 1 three      1
-    ## 
-    ## $`58`
-    ##    term weight
-    ## 1 great      1
-    ## 
-    ## $`80`
+    ## $`21`
     ##         term weight
-    ## 1 production      1
+    ## 1 regulation      1
+    ## 
+    ## $`28`
+    ##       term    weight
+    ## 1      got 1.0000000
+    ## 2 actually 0.5421049
+    ## 
+    ## $`68`
+    ##    term   weight
+    ## 1   bin 1.000000
+    ## 2 laden 1.000000
+    ## 3 osama 0.449873
+    ## 
+    ## $`90`
+    ##       term   weight
+    ## 1 business 1.000000
+    ## 2    small 0.679014
 
 An Experiment
 -------------
@@ -783,9 +783,8 @@ Based on the dendrogram, I used `k = 50` for the number of topics.
 
 If you're curious about the heaviest weighted tf-idf terms in each
 cluster the next code chunk provides the top five weighted terms used in
-each cluster. If a cluster has `...` no terms met the minimum tf-idf
-cut-off. Below this I provide a bar plot of the frequencies of clusters
-to help put the other information into perspective.
+each cluster. Below this I provide a bar plot of the frequencies of
+clusters to help put the other information into perspective.
 
     invisible(Map(function(x, y){
 
@@ -793,62 +792,62 @@ to help put the other information into perspective.
             cat(sprintf("Cluster %s: ...\n", y))
         } else {
             m <- dplyr::top_n(x, 5, n)
-            o <- paste(paste0(m[[1]], " (", m[[2]], ")"), collapse="; ")
+            o <- paste(paste0(m[[1]], " (", round(m[[2]], 1), ")"), collapse="; ")
             cat(sprintf("Cluster %s: %s\n", y, o))       
         }
 
-    }, get_terms(ca5, .02), names(get_terms(ca5, .02))))
+    }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
-    ## Cluster 1: topic (1); sixteen (0.0996292336581667); going (0.0274679140836945); just (0.0235451854151687); rather (0.0232891499290035); generally (0.0200884564211926)
-    ## Cluster 2: mary (1); second (0.324762078257752); president (0.095790768616159); provide (0.0489200251164163); note (0.0278525601747039); employers (0.0227390610675377)
-    ## Cluster 3: sorry (1); name (0.244650336086723)
+    ## Cluster 1: topic (1); separate (1); medicare (0.8)
+    ## Cluster 2: mary (1); kerry (0.9); barry (0.9); silliness (0.5); speech (0.4)
+    ## Cluster 3: sorry (1)
     ## Cluster 4: absolutely (1)
-    ## Cluster 5: regulation (1); qualified (0.172411695500637); provisions (0.0691145479941463); people (0.0523475584092218); back (0.0336941892284982); qualify (0.0302658478144301)
-    ## Cluster 6: yes (1); places (0.333471616628349)
-    ## Cluster 7: bob (1); let (0.896260157972089); advice (0.253723310105413); give (0.172443079640244); well (0.0920861957021324); one (0.064256490734986)
-    ## Cluster 8: matter (1); obamacare (0.0600314685730801); cause (0.038733435995732); ask (0.034522787435493); things (0.0275473541985628); condition (0.0265936366625109)
-    ## Cluster 9: gets (1); way (0.417261226412456); america (0.0807917267588479); nobody's (0.0441470156737316); efficiently (0.0437646914633211); planes (0.0297316636170029)
-    ## Cluster 10: time (1); issue (0.571831290878595); vitally (0.552968770339923); seen (0.133271062383573); get (0.0640555792501928)
-    ## Cluster 11: well (1); speak (0.266383959699891); moment (0.244870652471098); need (0.102378365564775)
+    ## Cluster 5: regulation (1); dodd (0.5); frank (0.5)
+    ## Cluster 6: yes (1)
+    ## Cluster 7: bob (1); let (0.9); mention (0.4)
+    ## Cluster 8: matter (1); fact (0.7)
+    ## Cluster 9: gets (1); first (0.8); become (0.8); sunday (0.5); thing (0.4)
+    ## Cluster 10: time (1); used (1); interrupted (0.8); issue (0.6); vitally (0.6)
+    ## Cluster 11: well (1)
     ## Cluster 12: respond (1)
-    ## Cluster 13: small (1); jobs (0.630570915550014); met (0.246240963763578); live (0.12218021918765); filing (0.0650829272143366)
-    ## Cluster 14: government (1); people (0.389636989475016); place (0.109147223494582); disturbed (0.0517674122058484); complain (0.0282826837417318)
-    ## Cluster 15: company (1); grow (0.0702089677871267); tesla (0.0310456251213221); basic (0.0250763041137348); choices (0.0249768152575664); lead (0.0218974299972695)
-    ## Cluster 16: great (1); see (0.304062792606493); job (0.181818181818182); done (0.159199790413024)
-    ## Cluster 17: role (1); syrian (0.103077892913994); council (0.0439348396026862); just (0.0300828652158312); responsible (0.029016692679092)
-    ## Cluster 18: damage (1); got (0.336507749488007); provide (0.26906013814029); willingness (0.0909090909090909); parts (0.0734294768242195); course (0.0396947473356813)
-    ## Cluster 19: energy (1); taking (0.212491892594422); just (0.075666785196478); europe (0.0367723848426351); given (0.0222784387070814)
-    ## Cluster 20: yeah (1); guns (0.237024987145956); pieces (0.0899162996743652); legislation (0.061719604647929); presume (0.0615216787245657); two (0.0359775776398878)
-    ## Cluster 21: detroit (1); answer (0.43234422555601); forget (0.216154821137528); governor (0.0673067781108058); people (0.0653948300063515)
-    ## Cluster 22: oil (1); policy (0.223156189220638); true (0.0914738683287482); country (0.0893095101779236); it'll (0.0211625028109402)
-    ## Cluster 23: federal (1); waters (0.703722795839302); land (0.591004041291982); problem (0.197001347097327); half (0.175022598917936)
-    ## Cluster 24: true (1); probably (0.190103482545232); just (0.114966059411124); romney (0.099755545761792); well (0.0821552657297301)
-    ## Cluster 25: much (1); cut (0.969821274781247)
-    ## Cluster 26: question (1); much (0.0979853342476531); cut (0.0950282617699255); got (0.0312565440804192); get (0.024065896422711)
+    ## Cluster 13: small (1); years (0.7); three (0.5); america (0.5); back (0.4)
+    ## Cluster 14: government (1); forward (0.8); katherine (0.8); difference (0.5); young (0.5)
+    ## Cluster 15: company (1); will (0.6)
+    ## Cluster 16: great (1)
+    ## Cluster 17: role (1); leadership (1); done (0.7); get (0.4)
+    ## Cluster 18: damage (1); party (0.8); say (0.6)
+    ## Cluster 19: energy (1); future (0.4)
+    ## Cluster 20: yeah (1); good (0.6); thanks (0.5)
+    ## Cluster 21: detroit (1); answer (0.4)
+    ## Cluster 22: oil (1); produced (0.8); coal (0.5); bunch (0.5); whole (0.4)
+    ## Cluster 23: federal (1); permits (0.8); licenses (0.7); waters (0.7); land (0.6)
+    ## Cluster 24: true (1)
+    ## Cluster 25: much (1); cut (1)
+    ## Cluster 26: question (1)
     ## Cluster 27: right (1)
-    ## Cluster 28: actually (1); mine (0.301416895402805); leases (0.267926129246938); fact (0.140871165488306); take (0.104197909345632)
-    ## Cluster 29: production (1); gas (0.240805100887951); government (0.145287425686538); private (0.112462878026246); percent (0.0635985608237335)
-    ## Cluster 30: governor (1); romney (0.151183780998314); said (0.0250734620815368)
-    ## Cluster 31: believe (1); case (0.248772382632109); answer (0.181112647200164); think (0.120890325995243); people (0.0913148218137486)
-    ## Cluster 32: candy (1); think (0.0725060294706801); going (0.0478004818421371)
-    ## Cluster 33: balance (1); business (0.123245938885084); twenty (0.0967919715586346); deficit (0.0957551301066314); changes (0.0207584505965127)
-    ## Cluster 34: women (1); care (0.0808616691387846); said (0.0611241498942465); need (0.0611082589520729); says (0.0205969166029487)
-    ## Cluster 35: want (1); opportunities (0.185097125209257); part (0.115593900112195); believe (0.110780165853653); forth (0.0206926567799711)
-    ## Cluster 36: china (1); overseas (0.221101940776537); buying (0.0495251400438136); ways (0.048936440804696); encouraging (0.0219713518695042)
+    ## Cluster 28: actually (1); got (0.5)
+    ## Cluster 29: production (1)
+    ## Cluster 30: governor (1)
+    ## Cluster 31: believe (1)
+    ## Cluster 32: candy (1)
+    ## Cluster 33: balance (1); budget (0.7); spending (0.4); military (0.4)
+    ## Cluster 34: women (1)
+    ## Cluster 35: want (1); make (1); sure (0.9); timekeepers (0.7); immigration (0.6)
+    ## Cluster 36: china (1); trade (0.5); jobs (0.4)
     ## Cluster 37: lorraine (1)
-    ## Cluster 38: pension (1); blind (0.0924758666730826); last (0.0340337282631181); years (0.0256788458594185); just (0.0237146394791628)
-    ## Cluster 39: record (1); often (0.453157720410901); airbrush (0.0400735879831331); anybody (0.0264258371659704); trying (0.0254893071963349)
-    ## Cluster 40: pakistan (1); region (0.277568295734401); greet (0.0794542162865311); democratically (0.0775280534674637); fact (0.0364812153815521)
-    ## Cluster 41: terror (1); rose (0.744259979098371); said (0.346776584392684); president (0.220621908873599); make (0.0877915672479779)
-    ## Cluster 42: foreign (1); certainly (0.209676845912997); sorry (0.124248137175689); got (0.123149231138356); terrorism (0.0211685172962943)
-    ## Cluster 43: happy (1); conversation (0.181411692986489); longer (0.170103452689211)
-    ## Cluster 44: indicated (1); weeks (0.132505525664538); place (0.104873847882916); still (0.0918287959562528); just (0.0495036699443204)
-    ## Cluster 45: syria (1); anticipate (0.215051053403125); libya (0.182119421762312); friends (0.182119421762312); well (0.042874597932434)
-    ## Cluster 46: ten (1); earlier (0.778028980787231); years (0.550802881805172); took (0.428571428571429); office (0.365356164848883)
-    ## Cluster 47: iran (1); said (0.221887262127047); mullahs (0.0690796816284301); probably (0.0592997833527262); everything (0.0592997833527262); thing (0.0562586400486147); capable (0.0556691116998602); tried (0.0434875108306748)
-    ## Cluster 48: liquidate (1); said (0.137965532084574); bankruptcy (0.117256789654769); circumstances (0.0506846117528302); suggested (0.0480710692590781); nothing (0.0298719772403983)
-    ## Cluster 49: look (1); people (0.444223972703424); can (0.440009921054686); take (0.354977414280176); will (0.300573987586919)
-    ## Cluster 50: wrong (1); way (0.0799623598858537)
+    ## Cluster 38: pension (1); looked (0.5)
+    ## Cluster 39: record (1); check (0.8); gone (0.6); often (0.5)
+    ## Cluster 40: pakistan (1); sure (0.6); afghanistan (0.5); nation (0.5); make (0.4)
+    ## Cluster 41: terror (1); act (0.9); garden (0.8); rose (0.7); spontaneous (0.4)
+    ## Cluster 42: foreign (1); troops (0.8); posture (0.7); policy (0.7); thought (0.4)
+    ## Cluster 43: happy (1)
+    ## Cluster 44: indicated (1)
+    ## Cluster 45: syria (1); assad (0.5); remove (0.5)
+    ## Cluster 46: ten (1); earlier (0.8); years (0.6); took (0.4)
+    ## Cluster 47: iran (1); nuclear (0.8); sanctions (0.7); nations (0.6); israel (0.5)
+    ## Cluster 48: liquidate (1); industry (0.5)
+    ## Cluster 49: look (1); people (0.4); can (0.4)
+    ## Cluster 50: wrong (1)
 
     invisible(summary(ca5))
 

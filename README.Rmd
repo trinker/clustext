@@ -236,13 +236,13 @@ summary(ca2) %>%
     head(12)
 
 ## Split Text into Clusters
-set.seed(3); inds <- sort(sample.int(100, 5))
+set.seed(5); inds <- sort(sample.int(100, 5))
 
 get_text(ca2)[inds] %>%
     lapply(head, 10)
 
 ## Get Associated Terms
-get_terms(ca2, term.cutoff = .07)[inds]
+get_terms(ca2, .4)[inds]
 ```
 
 
@@ -396,7 +396,7 @@ presidential_debates_2012 %>%
 ```
 
 
-If you're curious about the heaviest weighted tf-idf terms in each cluster the next code chunk provides the top five weighted terms used in each cluster.  If a cluster has `...` no terms met the minimum tf-idf cut-off.  Below this I provide a bar plot of the frequencies of clusters to help put the other information into perspective.
+If you're curious about the heaviest weighted tf-idf terms in each cluster the next code chunk provides the top five weighted terms used in each cluster.  Below this I provide a bar plot of the frequencies of clusters to help put the other information into perspective.
 
 
 
@@ -407,11 +407,11 @@ invisible(Map(function(x, y){
         cat(sprintf("Cluster %s: ...\n", y))
     } else {
         m <- dplyr::top_n(x, 5, n)
-        o <- paste(paste0(m[[1]], " (", m[[2]], ")"), collapse="; ")
+        o <- paste(paste0(m[[1]], " (", round(m[[2]], 1), ")"), collapse="; ")
         cat(sprintf("Cluster %s: %s\n", y, o))       
     }
 
-}, get_terms(ca5, .02), names(get_terms(ca5, .02))))
+}, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
 ```
 
