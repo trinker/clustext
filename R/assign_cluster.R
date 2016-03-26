@@ -90,19 +90,20 @@ assign_cluster.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)), h =
 
     attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
     attributes(out)[["model"]] <- x
-    attributes(out)[["algorithm"]] <- 'hierarchical'    
+    attributes(out)[["algorithm"]] <- 'hierarchical'
+    vect <- c(out)
     attributes(out)[["join"]] <- function(x) {
 
-            if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
+        if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
 
-            dplyr::select(
-                dplyr::left_join(
-                    dplyr::mutate(x, id_temporary = as.character(1:n())),
-                    dplyr::tbl_df(textshape::bind_vector(out, 'id_temporary', 'cluster') )
-                ),
-                -id_temporary
-            )
-        }
+        dplyr::select(
+            dplyr::left_join(
+                dplyr::mutate(x, id_temporary = as.character(1:n())),
+                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
+            ),
+            -id_temporary
+        )
+    }
     out
 
 }
@@ -122,7 +123,8 @@ assign_cluster.kmeans_cluster <- function(x, ...){
 
     attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
     attributes(out)[["model"]] <- x
-    attributes(out)[["algorithm"]] <- 'kmeans'    
+    attributes(out)[["algorithm"]] <- 'kmeans'
+    vect <- c(out)
     attributes(out)[["join"]] <- function(x) {
 
         if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
@@ -130,7 +132,41 @@ assign_cluster.kmeans_cluster <- function(x, ...){
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(out, 'id_temporary', 'cluster') )
+                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
+            ),
+            -id_temporary
+        )
+    }
+    out
+
+}
+
+
+
+#' @export
+#' @rdname assign_cluster
+#' @method assign_cluster skmeans_cluster
+assign_cluster.skmeans_cluster <- function(x, ...){
+
+    out <- x[['cluster']]
+    n <- id_temporary <- NULL
+    orig <- attributes(x)[['text_data_store']][['data']]
+    lens <- length(orig[['text']]) + length(orig[['removed']])
+
+    class(out) <- c("assign_cluster_kmeans","assign_cluster", class(out))
+
+    attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
+    attributes(out)[["model"]] <- x
+    attributes(out)[["algorithm"]] <- 'skmeans'
+    vect <- c(out)
+    attributes(out)[["join"]] <- function(x) {
+
+        if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
+
+        dplyr::select(
+            dplyr::left_join(
+                dplyr::mutate(x, id_temporary = as.character(1:n())),
+                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
             ),
             -id_temporary
         )
@@ -150,26 +186,27 @@ assign_cluster.nmf_cluster <- function(x, ...){
     n <- id_temporary <- NULL
     orig <- attributes(x)[['text_data_store']][['data']]
     lens <- length(orig[['text']]) + length(orig[['removed']])
-    
+
     class(out) <- c("assign_cluster_nmf","assign_cluster", class(out))
-    
+
     attributes(out)[["data_store"]] <- attributes(x)[["text_data_store"]]
     attributes(out)[["model"]] <- x
-    attributes(out)[["algorithm"]] <- 'nmf'    
+    attributes(out)[["algorithm"]] <- 'nmf'
+    vect <- c(out)
     attributes(out)[["join"]] <- function(x) {
-        
+
         if (nrow(x) != lens) warning(sprintf("original data had %s elements, `x` has %s", lens, nrow(x)))
-        
+
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(out, 'id_temporary', 'cluster') )
+                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
             ),
             -id_temporary
         )
     }
     out
-    
+
 }
 
 

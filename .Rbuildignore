@@ -19,4 +19,4 @@ Thumb.db
 inst/clustext_logo
 inst/staticdocs
 inst/extra_statdoc
-inst/build_data.R
+inst/extra_scripts

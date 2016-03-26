@@ -44,6 +44,14 @@ get_text.nmf_cluster <- function(x, ...){
 }
 
 
+#' @export
+#' @rdname get_text
+#' @method get_text skmeans_cluster
+get_text.skmeans_cluster <- function(x, ...){
+    get_text(attributes(x)[["text_data_store"]][["data"]])
+}
+
+
 
 
 #' @export

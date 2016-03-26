@@ -6,6 +6,7 @@
 \alias{get_dtm.hierarchical_cluster}
 \alias{get_dtm.kmeans_cluster}
 \alias{get_dtm.nmf_cluster}
+\alias{get_dtm.skmeans_cluster}
 \title{Get a \code{\link[tm]{DocumentTermMatrix}} Stored in a \code{hierarchical_cluster} Object}
 \usage{
 get_dtm(x, ...)
@@ -15,6 +16,8 @@ get_dtm(x, ...)
 \method{get_dtm}{hierarchical_cluster}(x, ...)
 
 \method{get_dtm}{kmeans_cluster}(x, ...)
+
+\method{get_dtm}{skmeans_cluster}(x, ...)
 
 \method{get_dtm}{nmf_cluster}(x, ...)
 }

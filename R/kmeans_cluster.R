@@ -5,7 +5,7 @@
 #' \code{\link[tm]{DocumentTermMatrix}}.
 #'
 #' @param x A data store object (see \code{\link[clustext]{data_store}}).
-#' @param k The number of clusters.  
+#' @param k The number of clusters.
 #' @param \ldots Other arguments passed to \code{\link[stats]{kmeans}}.
 #' @return Returns an object of class \code{"kmeans"}.
 #' @export
@@ -51,7 +51,7 @@ kmeans_cluster <- function(x, k, ...){
 kmeans_cluster.data_store <- function(x, k, ...){
 
 
-    fit <- stats::kmeans(x[["dtm"]], centers=k)
+    fit <- stats::kmeans(x[["dtm"]], centers=k, ...)
 
     text_data_store <- new.env(FALSE)
     text_data_store[["data"]] <- x

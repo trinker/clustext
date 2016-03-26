@@ -7,6 +7,7 @@
 \alias{get_text.hierarchical_cluster}
 \alias{get_text.kmeans_cluster}
 \alias{get_text.nmf_cluster}
+\alias{get_text.skmeans_cluster}
 \title{Get a Text Stored in Various Objects}
 \usage{
 get_text(x, ...)
@@ -16,6 +17,8 @@ get_text(x, ...)
 \method{get_text}{kmeans_cluster}(x, ...)
 
 \method{get_text}{nmf_cluster}(x, ...)
+
+\method{get_text}{skmeans_cluster}(x, ...)
 
 \method{get_text}{data_store}(x, ...)
 

@@ -7,12 +7,12 @@
 compare(...)
 }
 \arguments{
-\item{\ldots}{A series of outputs from \code{assign_cluster} for various 
+\item{\ldots}{A series of outputs from \code{assign_cluster} for various
 cluster algorithmns.}
 }
 \value{
-Returns a pair-wise comparison matrix of Adjusted Rand Indices for 
-algorithm.  Higher Adjusted Rand Index scores indicate higher cluster 
+Returns a pair-wise comparison matrix of Adjusted Rand Indices for
+algorithm.  Higher Adjusted Rand Index scores indicate higher cluster
 assignment agreement.
 }
 \description{
@@ -23,8 +23,26 @@ clustering algorithms.
 compare(
     assignments$hierarchical_assignment,
     assignments$kmeans_assignment,
+    assignments$skmeans_assignment,
     assignments$nmf_assignment
 )
+
+## Understanding the ARI
+set.seed(10)
+w <- sample(1:10, 40, TRUE)
+x <- 11-w
+set.seed(20)
+y <- sample(1:10, 40, TRUE)
+set.seed(50)
+z <- sample(1:10, 40, TRUE)
+
+data.frame(w, x, y, z)
+
+library(mclust)
+
+mclust::adjustedRandIndex(w, x)
+mclust::adjustedRandIndex(x, y)
+mclust::adjustedRandIndex(x, z)
 }
 \references{
 \url{http://faculty.washington.edu/kayee/pca/supp.pdf}

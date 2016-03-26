@@ -148,24 +148,35 @@ get_terms.assign_cluster_kmeans <- function(x, min.weight = .6, nrow = NULL, ...
 }
 
 
+#' @export
+#' @rdname get_terms
+#' @method get_terms assign_cluster_kmeans
+get_terms.assign_cluster_skmeans <- function(x, min.weight = .6, nrow = NULL, ...){
+
+
+    get_terms.assign_cluster_hierarchical(x = x, min.weight = min.weight, nrow = nrow, ...)
+
+}
+
+
 
 #' @export
 #' @rdname get_terms
 #' @method get_terms assign_cluster_nmf
 get_terms.assign_cluster_nmf <- function(x, min.weight = .6, nrow = NULL, ...){
-    
+
     weight <- term <- NULL
-    
+
     assignment <- x
     x <- attributes(x)[['model']]
     nms <- seq_len(ncol(x[["W"]]))
     x <- x[['H']]
-    
+
     out <- stats::setNames(lapply(1:nrow(x), function(i){
         vals <- min_max(sort(x[i, ], decreasing=TRUE))
         as.data.frame(textshape::bind_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
     }), nms)
-    
+
     out2 <- lapply(out, function(x) {
         rownames(x) <- NULL
         x <- dplyr::filter(x, weight >= min.weight)
@@ -173,11 +184,11 @@ get_terms.assign_cluster_nmf <- function(x, min.weight = .6, nrow = NULL, ...){
             x <- x[1:nrow, ]
         }
         x <- dplyr::filter(x, !is.na(term))
-        
+
         if (nrow(x) == 0) return(NULL)
         x
     })
-    
+
     if (!is.null(nrow)) {
         out2 <- lapply(out2, function(x){
             if (is.null(x) || nrow(x) <= nrow) return(x)
@@ -187,7 +198,7 @@ get_terms.assign_cluster_nmf <- function(x, min.weight = .6, nrow = NULL, ...){
     class(out2) <- c("get_terms", class(out2))
     attributes(out2)[['assignment']] <- assignment
     out2
-    
+
 }
 
 

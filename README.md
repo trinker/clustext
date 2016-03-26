@@ -32,19 +32,18 @@ This helps the more salient words to rise to the top. Some clustering
 algorithms require a similarity matrix while others require just the
 tf-idf weighted DocumentTermMatrices. Likewise, some algorithms require
 `k` terms to be specified before the model fit while others allow `k`
-topics to be determined after the odel has been fit.
+topics to be determined after the model has been fit.
 
 With algorithms that require a similarity matrix (e.g., hierarchical
-clustering) we apply cosine or jaccard distance measures to compare the
-terms (or features) of each document. I have found cosine distance to
-work well with sparse matrices to produce distances metrics between the
-documents. The clustering model is fit to separate the documents into
-clusters. In the case of some clustering techniques (e.g., hierarchical
-clustering) the user then may apply k clusters to the fit, clustering
-documents with similar important text features. Other techniques require
-that `k` be specified prior to fitting the model. The documents can then
-be grouped by clusters and their accompanying salient words extracted as
-well.
+clustering) we apply cosine distance measures to compare the terms (or
+features) of each document. I have found cosine distance to work well
+with sparse matrices to produce distances metrics between the documents.
+The clustering model is fit to separate the documents into clusters. In
+the case of some clustering techniques (e.g., hierarchical clustering)
+the user then may apply k clusters to the fit, clustering documents with
+similar important text features. Other techniques require that `k` be
+specified prior to fitting the model. The documents can then be grouped
+by clusters and their accompanying salient words extracted as well.
 
 
 Table of Contents
@@ -103,36 +102,41 @@ table below:
 <td align="left">Fits a kmeans cluster model</td>
 </tr>
 <tr class="even">
+<td align="left"><code>skmeans_cluster</code></td>
+<td align="left">cluster fit</td>
+<td align="left">Fits an skmeans cluster model</td>
+</tr>
+<tr class="odd">
 <td align="left"><code>nfm_cluster</code></td>
 <td align="left">cluster fit</td>
 <td align="left">Fits a non-negative matrix factorization cluster model</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>assign_cluster</code></td>
 <td align="left">assignment</td>
 <td align="left">Assigns cluster to document/text element</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>get_text</code></td>
 <td align="left">extraction</td>
 <td align="left">Get text from various <strong>clustext</strong> objects</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>get_dtm</code></td>
 <td align="left">extraction</td>
 <td align="left">Get <code>tm::DocumentTermMatrix</code> from various <strong>clustext</strong> objects</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>get_removed</code></td>
 <td align="left">extraction</td>
 <td align="left">Get removed text elements from various <strong>clustext</strong> objects</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>get_terms</code></td>
 <td align="left">extraction</td>
 <td align="left">Get clustered weighted important terms from an <strong>assign_cluster</strong> object</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>get_documents</code></td>
 <td align="left">extraction</td>
 <td align="left">Get clustered documents from an <strong>assign_cluster</strong> object</td>
@@ -200,13 +204,13 @@ character length, stopword removal or such this is when/where it's done.
 
     ds
 
+    ## <<Data Store (documents: 10, terms: 3,180)>>
     ## Text Elements      : 10
     ## Elements Removed   : 0
-    ## Documents          : 10
-    ## Terms              : 3,369
-    ## Non-/sparse entries: 7713/25977
-    ## Sparsity           : 77%
+    ## Non-/sparse entries: 6916/24884
+    ## Sparsity           : 78%
     ## Maximal term length: 16
+    ## Minimum term length: 3
 
 Fit the Model: Hierarchical Cluster
 -----------------------------------
@@ -246,7 +250,7 @@ groups each of the candidates together at each of the debate times.
     plot(myfit)
 
     ## 
-    ## k approximated to: 4
+    ## k approximated to: 5
 
 ![](inst/figure/unnamed-chunk-6-1.png)
 
@@ -343,61 +347,62 @@ bound on the min-max scaled tf-idf to accept. If you don't get any terms
 you may want to lower this or reduce `min.n`. Likewise, these two
 parameters can be raised to eliminate noise.
 
-    get_terms(ca, .075)
+    get_terms(ca)
 
-    ## $`2`
-    ##          term n
-    ## 1        each 2
-    ## 2   gentlemen 2
-    ## 3          go 2
-    ## 4       leave 2
-    ## 5     minutes 2
-    ## 6      mister 2
-    ## 7       night 2
-    ## 8      romney 2
-    ## 9     segment 2
-    ## 10      segue 2
-    ## 11        sir 2
-    ## 12 statements 2
+    ## $`1 (n=1)`
+    ##         term    weight
+    ## 1     mister 1.0000000
+    ## 2      along 0.7086841
+    ## 3       sort 0.6678306
+    ## 4 unemployed 0.6223915
     ## 
-    ## $`3`
-    ##          term n
-    ## 1       banks 2
-    ## 2       board 2
-    ## 3        care 2
-    ## 4     federal 2
-    ## 5      health 2
-    ## 6   insurance 2
-    ## 7    medicare 2
-    ## 8        plan 2
-    ## 9  republican 2
-    ## 10     that's 2
-    ## 11       they 2
+    ## $`2 (n=2)`
+    ##      term    weight
+    ## 1 segment 1.0000000
+    ## 2 minutes 0.9091730
+    ## 3  minute 0.6648988
     ## 
-    ## $`4`
-    ##          term n
-    ## 1        coal 2
-    ## 2 immigration 2
-    ## 3        jobs 2
-    ## 4         oil 2
-    ## 5  production 2
-    ## 6        sure 2
-    ## 7      that's 2
-    ## 8       women 2
+    ## $`3 (n=2)`
+    ##        term    weight
+    ## 1 insurance 1.0000000
+    ## 2    health 0.6200389
     ## 
-    ## $`5`
-    ##         term n
-    ## 1       home 2
-    ## 2       iran 2
-    ## 3     israel 2
-    ## 4   military 2
-    ## 5    nuclear 2
-    ## 6  sanctions 2
-    ## 7      stand 2
-    ## 8       sure 2
-    ## 9       they 2
-    ## 10    threat 2
-    ## 11    troops 2
+    ## $`4 (n=2)`
+    ##           term    weight
+    ## 1         coal 1.0000000
+    ## 2         jobs 0.9439400
+    ## 3         sure 0.9330092
+    ## 4  immigration 0.9134630
+    ## 5          oil 0.9014907
+    ## 6        issue 0.7352300
+    ## 7        candy 0.7303597
+    ## 8   production 0.7291683
+    ## 9        women 0.7073096
+    ## 10     million 0.6792076
+    ## 11      settle 0.6056192
+    ## 12   illegally 0.6055244
+    ## 
+    ## $`5 (n=2)`
+    ##         term    weight
+    ## 1    nuclear 1.0000000
+    ## 2       iran 0.9511527
+    ## 3  sanctions 0.8585336
+    ## 4     israel 0.7895173
+    ## 5       sure 0.7698270
+    ## 6     region 0.7608304
+    ## 7   military 0.7272537
+    ## 8     troops 0.6768143
+    ## 9   pakistan 0.6766784
+    ## 10     world 0.6716568
+    ## 11    threat 0.6520238
+    ## 12      iraq 0.6467488
+    ## 
+    ## $`6 (n=1)`
+    ##            term    weight
+    ## 1    department 1.0000000
+    ## 2           chu 0.6666667
+    ## 3        stated 0.6666667
+    ## 4 misperception 0.6666667
 
 ### Clusters, Terms, and Docs Plot
 
@@ -410,13 +415,12 @@ document.
 
     key <- data_frame(
         cluster = 1:6,
-        labs = get_terms(ca, .085) %>%
+        labs = get_terms(ca) %>%
             bind_list("cluster") %>%
-            select(-n) %>%
+            select(-weight) %>%
             group_by(cluster) %>%
             summarize(term=paste(term, collapse=", ")) %>%
-            apply(1, paste, collapse=": ") %>%
-            c("1:", ., "6:")
+            apply(1, paste, collapse=": ")
     )
 
     ca %>%
@@ -484,7 +488,7 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 7.803249 secs
+    ## Time difference of 5.794089 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
@@ -494,18 +498,18 @@ texts and terms) to a random 5 clusters for the sake of space.
 ![](inst/figure/unnamed-chunk-13-1.png)
 
     ##    cluster count
-    ## 1        7   692
-    ## 2        3   368
-    ## 3       33   133
-    ## 4        5   106
-    ## 5       59    67
-    ## 6        8    57
-    ## 7       61    51
-    ## 8       53    48
-    ## 9       13    47
-    ## 10      27    41
-    ## 11      38    40
-    ## 12      12    37
+    ## 1        2  1409
+    ## 2       25    54
+    ## 3       15    50
+    ## 4       39    46
+    ## 5       61    39
+    ## 6       36    37
+    ## 7       40    33
+    ## 8       17    31
+    ## 9       31    29
+    ## 10      37    28
+    ## 11      27    25
+    ## 12      46    23
 
     ## Split Text into Clusters
     set.seed(3); inds <- sort(sample.int(100, 5))
@@ -514,100 +518,82 @@ texts and terms) to a random 5 clusters for the sake of space.
         lapply(head, 10)
 
     ## $`17`
-    ##  [1] "One last point I want to make."                        
-    ##  [2] "Now, the last point I'd make before|"                  
-    ##  [3] "They put a plan out."                                  
-    ##  [4] "They put out a plan, a bipartisan plan."               
-    ##  [5] "Let me make one last point."                           
-    ##  [6] "And Governor Romney's says he's got a five point plan?"
-    ##  [7] "Governor Romney doesn't have a five point plan."       
-    ##  [8] "He has a one point plan."                              
-    ##  [9] "My five point plan does it."                           
-    ## [10] "But the last point I want to make is this."            
+    ##  [1] "But my experience my experience the private sector typically is able to provide a better product at a lower cost."                                                                                     
+    ##  [2] "Well, in part, it comes, again, from my experience."                                                                                                                                                   
+    ##  [3] "Which is which is my experience as a governor is if I come in and and lay down a piece of legislation and say, It's my way or the highway, I don't get a lot done."                                    
+    ##  [4] "And by the way, I've had that experience."                                                                                                                                                             
+    ##  [5] "But, ultimately, part of being principled, part of being a leader is, A, being able to describe exactly what it is that you intend to do, not just saying, I'll sit down, but you have to have a plan."
+    ##  [6] "And so part of leadership and governing is both saying what it is that you are for, but also being willing to say no to some things."                                                                  
+    ##  [7] "I've got three part time jobs."                                                                                                                                                                        
+    ##  [8] "So he's got the oil and gas part, but he doesn't have the clean energy part."                                                                                                                          
+    ##  [9] "That's part that's part one."                                                                                                                                                                          
+    ## [10] "That's part of what I'm fighting for as president of the United States."                                                                                                                               
     ## 
     ## $`32`
-    ##  [1] "I think this is a great example."                                                                                                 
-    ##  [2] "I think something this big, this important has to be done on a bipartisan basis."                                                 
-    ##  [3] "Governor Romney said this has to be done on a bipartisan basis."                                                                  
-    ##  [4] "This was a bipartisan idea."                                                                                                      
-    ##  [5] "This is a this is an important election and I'm concerned about America."                                                         
-    ##  [6] "I I know this is bigger than an election about the two of us as individuals."                                                     
-    ##  [7] "It's an election about the course of America."                                                                                    
-    ##  [8] "Well, think about what the governor think about what the governor just said."                                                     
-    ##  [9] "This is not just a women's issue, this is a family issue, this is a middle class issue, and that's why we've got to fight for it."
-    ## [10] "Mister President why don't you get in on this quickly, please?"                                                                   
+    ##  [1] "It's hurt the housing market because Dodd Frank didn't anticipate putting in place the kinds of regulations you have to have."                         
+    ##  [2] "And we face this deficit could crush the future generations."                                                                                          
+    ##  [3] "Jeremy, first of all, your future is bright."                                                                                                          
+    ##  [4] "And there are a bunch of things we can do to make sure your future is bright."                                                                         
+    ##  [5] "We do those things, not only is your future going to be bright but America's future is going to bright as well."                                       
+    ##  [6] "We've also got to look to the future."                                                                                                                 
+    ##  [7] "It's critical to our future."                                                                                                                          
+    ##  [8] "I'm not that optimistic as I was in two thousand twelve."                                                                                              
+    ##  [9] "It's about who can get the middle class in this country a bright and prosperous future and assure our kids the kind of hope and optimism they deserve."
+    ## [10] "I want one hundred percent of the American people to have a bright and prosperous future."                                                             
     ## 
     ## $`38`
-    ##  [1] "I will make sure we don't hurt the functioning of our of our marketplace and our business, because I want to bring back housing and get good jobs."                                                                                                                                                                                                                                                                                                                   
-    ##  [2] "And hard pressed states right now can't all do that."                                                                                                                                                                                                                                                                                                                                                                                                                 
-    ##  [3] "And everything that I've tried to do, and everything that I'm now proposing for the next four years in terms of improving our education system or developing American energy or making sure that we're closing loopholes for companies that are shipping jobs overseas and focusing on small businesses and companies that are creating jobs here in the United States, or closing our deficit in a responsible, balanced way that allows us to invest in our future."
-    ##  [4] "But not just jobs, good paying jobs."                                                                                                                                                                                                                                                                                                                                                                                                                                 
-    ##  [5] "I want to do that in industries, not just in Detroit, but all across the country and that means we change our tax code so we're giving incentives to companies that are investing here in the United States and creating jobs here."                                                                                                                                                                                                                                  
-    ##  [6] "I expect those new energy sources to be built right here in the United States."                                                                                                                                                                                                                                                                                                                                                                                       
-    ##  [7] "This is about bringing good jobs back for the middle class of America, and that's what I'm going to do."                                                                                                                                                                                                                                                                                                                                                              
-    ##  [8] "And that's creating jobs."                                                                                                                                                                                                                                                                                                                                                                                                                                            
-    ##  [9] "When you've got thousands of people right now in Iowa, right now in Colorado, who are working, creating wind power with good paying manufacturing jobs, and the Republican senator in that in Iowa is all for it, providing tax breaks to help this work and Governor Romney says I'm opposed."                                                                                                                                                                       
-    ## [10] "Candy, I don't have a policy of stopping wind jobs in Iowa and that they're not phantom jobs."                                                                                                                                                                                                                                                                                                                                                                        
+    ##  [1] "I just don't know how the president could have come into office, facing twenty three million people out of work, rising unemployment, an economic crisis at the at the kitchen table, and spend his energy and passion for two years fighting for Obamacare instead of fighting for jobs for the American people."
+    ##  [2] "And the proof of that is twenty three million people out of work."                                                                                                                                                                                                                                                
+    ##  [3] "We've got we've got barely have three minutes left."                                                                                                                                                                                                                                                              
+    ##  [4] "So we only have three three minutes left in the in the debate before we go to your closing statements."                                                                                                                                                                                                           
+    ##  [5] "Well what you're seeing in this country is twenty three million people struggling to find a job."                                                                                                                                                                                                                 
+    ##  [6] "There are three."                                                                                                                                                                                                                                                                                                 
+    ##  [7] "An economy that has twenty three million people looking for work is not a strong economy."                                                                                                                                                                                                                        
+    ##  [8] "Median income is down dollar four thousand three hundred a family and twenty three million Americans out of work."                                                                                                                                                                                                
+    ##  [9] "We don't have to settle for twenty three million people struggling to find a good job."                                                                                                                                                                                                                           
+    ## [10] "You can't have twenty three million people struggling to get a job."                                                                                                                                                                                                                                              
     ## 
     ## $`58`
-    ##  [1] "And the question is this."                                                                   
-    ##  [2] "Your question your question is one that's being asked by college kids all over this country."
-    ##  [3] "Mister President, the next question is going to be for you here."                            
-    ##  [4] "and the next question."                                                                      
-    ##  [5] "And the next question is for you."                                                           
-    ##  [6] "Governor, this question is for you."                                                         
-    ##  [7] "And Mister President, the next question is for you, so stay standing."                       
-    ##  [8] "And it's Katherine Fenton, who has a question for you."                                      
-    ##  [9] "Well, Katherine, that's a great question."                                                   
-    ## [10] "But the president does get this question."                                                   
+    ## [1] "And the key to great schools, great teachers."
+    ## [2] "You've done a great job."                     
+    ## [3] "You're doing great."                          
+    ## [4] "Great."                                       
+    ## [5] "Great to see you."                            
     ## 
     ## $`80`
-    ##  [1] "Natural gas production is the highest it's been in decades."                                                                                                                                                                                                      
-    ##  [2] "We have seen increases in coal production and coal employment."                                                                                                                                                                                                   
-    ##  [3] "Look, I want to make sure we use our oil, our coal, our gas, our nuclear, our renewables."                                                                                                                                                                        
-    ##  [4] "But what we don't need is to have the president keeping us from taking advantage of oil, coal and gas."                                                                                                                                                           
-    ##  [5] "This has not been Mister Oil, or Mister Gas, or Mister Coal."                                                                                                                                                                                                     
-    ##  [6] "I was in coal country."                                                                                                                                                                                                                                           
-    ##  [7] "The head of the EPA said, You can't build a coal plant."                                                                                                                                                                                                          
-    ##  [8] "And natural gas isn't just appearing magically."                                                                                                                                                                                                                  
-    ##  [9] "And when I hear Governor Romney say he's a big coal guy, I mean, keep in mind, when Governor, when you were governor of Massachusetts, you stood in front of a coal plant and pointed at it and said, This plant kills, and took great pride in shutting it down."
-    ## [10] "With respect to something like coal, we made the largest investment in clean coal technology, to make sure that even as we're producing more coal, we're producing it cleaner and smarter."
+    ## [1] "And the president's right in terms of the additional oil production, but none of it came on federal land."                            
+    ## [2] "As a matter of fact, oil production is down fourteen percent this year on federal land, and gas production was down nine percent."    
+    ## [3] "Oil production is up, natural gas production is up, and, most importantly, we're also starting to build cars that are more efficient."
+    ## [4] "And production on private on government land."                                                                                        
+    ## [5] "Production is up."                                                                                                                    
+    ## [6] "Production on government land of oil is down fourteen percent."                                                                       
+    ## [7] "And production on gas."                                                                                                               
+    ## [8] "I'm all for oil production."
 
     ## Get Associated Terms
     get_terms(ca2, term.cutoff = .07)[inds]
 
     ## $`17`
-    ##          term n
-    ## 1       point 7
-    ## 2        plan 6
-    ## 3 president's 2
+    ##         term    weight
+    ## 1     israel 1.0000000
+    ## 2       part 0.9239009
+    ## 3 experience 0.7560640
     ## 
     ## $`32`
-    ##         term n
-    ## 1      issue 4
-    ## 2     please 4
-    ## 3   election 3
-    ## 4      think 3
-    ## 5 bipartisan 2
-    ## 6    mistake 2
+    ##     term weight
+    ## 1 future      1
     ## 
     ## $`38`
-    ##          term n
-    ## 1   investing 3
-    ## 2 investments 3
-    ## 3   companies 2
-    ## 4        jobs 2
+    ##    term weight
+    ## 1 three      1
     ## 
     ## $`58`
-    ##        term n
-    ## 1  question 5
-    ## 2 katherine 2
-    ## 3      next 2
+    ##    term weight
+    ## 1 great      1
     ## 
     ## $`80`
-    ##      term n
-    ## 1    coal 4
-    ## 2 natural 3
+    ##         term weight
+    ## 1 production      1
 
 An Experiment
 -------------
@@ -813,56 +799,56 @@ to help put the other information into perspective.
 
     }, get_terms(ca5, .02), names(get_terms(ca5, .02))))
 
-    ## Cluster 1: medicare (5); back (2); topic (2)
-    ## Cluster 2: can (3); get (3); just (3); candy (2); chance (2); going (2); indicated (2); major (2); mister (2); president (2); private (2); product (2); second (2); someone (2); spontaneous (2); still (2)
-    ## Cluster 3: sorry (3)
-    ## Cluster 4: absolutely (3)
-    ## Cluster 5: dodd (3); frank (3); regulation (3); banks (2)
-    ## Cluster 6: yes (3)
-    ## Cluster 7: let (4); bob (2)
-    ## Cluster 8: ...
-    ## Cluster 9: first (3); one (3); way (3); become (2); came (2); cut (2); governor (2); israel (2); nation (2); number (2); office (2); sunday (2)
-    ## Cluster 10: time (3); issue (2); used (2)
-    ## Cluster 11: well (3)
-    ## Cluster 12: respond (2)
-    ## Cluster 13: ...
-    ## Cluster 14: choice (2); economy (2); election (2); forward (2); whether (2)
-    ## Cluster 15: companies (2); investing (2)
-    ## Cluster 16: great (3)
-    ## Cluster 17: done (3); leadership (3); get (2); role (2)
-    ## Cluster 18: say (3); party (2)
-    ## Cluster 19: energy (3)
-    ## Cluster 20: yeah (3); good (2); thanks (2)
-    ## Cluster 21: detroit (3); answer (2)
-    ## Cluster 22: coal (3); oil (3); bunch (2); governor (2); iowa (2); jobs (2); wind (2)
-    ## Cluster 23: cut (2); federal (2); land (2); licenses (2); permits (2); waters (2)
-    ## Cluster 24: true (4)
-    ## Cluster 25: cut (3); much (3)
-    ## Cluster 26: question (5); answer (3)
-    ## Cluster 27: right (2)
-    ## Cluster 28: actually (3); got (2)
-    ## Cluster 29: production (4); government (2); land (2)
-    ## Cluster 30: governor (9); romney (2)
-    ## Cluster 31: believe (2)
-    ## Cluster 32: candy (5)
-    ## Cluster 33: balance (2); budget (2); military (2); trillion (2)
-    ## Cluster 34: women (3)
-    ## Cluster 35: want (5); make (4); sure (4); immigration (2)
-    ## Cluster 36: ...
-    ## Cluster 37: lorraine (2)
-    ## Cluster 38: pension (4); chinese (2); investments (2); looked (2); mister (2); outside (2); trust (2)
-    ## Cluster 39: check (3); record (3)
-    ## Cluster 40: pakistan (2)
-    ## Cluster 41: act (3); attack (3); terror (3); day (2); garden (2); rose (2); said (2)
-    ## Cluster 42: troops (4); agreement (2); forces (2); thought (2); thousand (2)
-    ## Cluster 43: happy (3)
-    ## Cluster 44: indicated (3)
-    ## Cluster 45: syria (3)
-    ## Cluster 46: ten (2); years (2)
-    ## Cluster 47: iran (2)
-    ## Cluster 48: industry (3); liquidate (3)
-    ## Cluster 49: look (3); can (2); people (2)
-    ## Cluster 50: wrong (4)
+    ## Cluster 1: topic (1); sixteen (0.0996292336581667); going (0.0274679140836945); just (0.0235451854151687); rather (0.0232891499290035); generally (0.0200884564211926)
+    ## Cluster 2: mary (1); second (0.324762078257752); president (0.095790768616159); provide (0.0489200251164163); note (0.0278525601747039); employers (0.0227390610675377)
+    ## Cluster 3: sorry (1); name (0.244650336086723)
+    ## Cluster 4: absolutely (1)
+    ## Cluster 5: regulation (1); qualified (0.172411695500637); provisions (0.0691145479941463); people (0.0523475584092218); back (0.0336941892284982); qualify (0.0302658478144301)
+    ## Cluster 6: yes (1); places (0.333471616628349)
+    ## Cluster 7: bob (1); let (0.896260157972089); advice (0.253723310105413); give (0.172443079640244); well (0.0920861957021324); one (0.064256490734986)
+    ## Cluster 8: matter (1); obamacare (0.0600314685730801); cause (0.038733435995732); ask (0.034522787435493); things (0.0275473541985628); condition (0.0265936366625109)
+    ## Cluster 9: gets (1); way (0.417261226412456); america (0.0807917267588479); nobody's (0.0441470156737316); efficiently (0.0437646914633211); planes (0.0297316636170029)
+    ## Cluster 10: time (1); issue (0.571831290878595); vitally (0.552968770339923); seen (0.133271062383573); get (0.0640555792501928)
+    ## Cluster 11: well (1); speak (0.266383959699891); moment (0.244870652471098); need (0.102378365564775)
+    ## Cluster 12: respond (1)
+    ## Cluster 13: small (1); jobs (0.630570915550014); met (0.246240963763578); live (0.12218021918765); filing (0.0650829272143366)
+    ## Cluster 14: government (1); people (0.389636989475016); place (0.109147223494582); disturbed (0.0517674122058484); complain (0.0282826837417318)
+    ## Cluster 15: company (1); grow (0.0702089677871267); tesla (0.0310456251213221); basic (0.0250763041137348); choices (0.0249768152575664); lead (0.0218974299972695)
+    ## Cluster 16: great (1); see (0.304062792606493); job (0.181818181818182); done (0.159199790413024)
+    ## Cluster 17: role (1); syrian (0.103077892913994); council (0.0439348396026862); just (0.0300828652158312); responsible (0.029016692679092)
+    ## Cluster 18: damage (1); got (0.336507749488007); provide (0.26906013814029); willingness (0.0909090909090909); parts (0.0734294768242195); course (0.0396947473356813)
+    ## Cluster 19: energy (1); taking (0.212491892594422); just (0.075666785196478); europe (0.0367723848426351); given (0.0222784387070814)
+    ## Cluster 20: yeah (1); guns (0.237024987145956); pieces (0.0899162996743652); legislation (0.061719604647929); presume (0.0615216787245657); two (0.0359775776398878)
+    ## Cluster 21: detroit (1); answer (0.43234422555601); forget (0.216154821137528); governor (0.0673067781108058); people (0.0653948300063515)
+    ## Cluster 22: oil (1); policy (0.223156189220638); true (0.0914738683287482); country (0.0893095101779236); it'll (0.0211625028109402)
+    ## Cluster 23: federal (1); waters (0.703722795839302); land (0.591004041291982); problem (0.197001347097327); half (0.175022598917936)
+    ## Cluster 24: true (1); probably (0.190103482545232); just (0.114966059411124); romney (0.099755545761792); well (0.0821552657297301)
+    ## Cluster 25: much (1); cut (0.969821274781247)
+    ## Cluster 26: question (1); much (0.0979853342476531); cut (0.0950282617699255); got (0.0312565440804192); get (0.024065896422711)
+    ## Cluster 27: right (1)
+    ## Cluster 28: actually (1); mine (0.301416895402805); leases (0.267926129246938); fact (0.140871165488306); take (0.104197909345632)
+    ## Cluster 29: production (1); gas (0.240805100887951); government (0.145287425686538); private (0.112462878026246); percent (0.0635985608237335)
+    ## Cluster 30: governor (1); romney (0.151183780998314); said (0.0250734620815368)
+    ## Cluster 31: believe (1); case (0.248772382632109); answer (0.181112647200164); think (0.120890325995243); people (0.0913148218137486)
+    ## Cluster 32: candy (1); think (0.0725060294706801); going (0.0478004818421371)
+    ## Cluster 33: balance (1); business (0.123245938885084); twenty (0.0967919715586346); deficit (0.0957551301066314); changes (0.0207584505965127)
+    ## Cluster 34: women (1); care (0.0808616691387846); said (0.0611241498942465); need (0.0611082589520729); says (0.0205969166029487)
+    ## Cluster 35: want (1); opportunities (0.185097125209257); part (0.115593900112195); believe (0.110780165853653); forth (0.0206926567799711)
+    ## Cluster 36: china (1); overseas (0.221101940776537); buying (0.0495251400438136); ways (0.048936440804696); encouraging (0.0219713518695042)
+    ## Cluster 37: lorraine (1)
+    ## Cluster 38: pension (1); blind (0.0924758666730826); last (0.0340337282631181); years (0.0256788458594185); just (0.0237146394791628)
+    ## Cluster 39: record (1); often (0.453157720410901); airbrush (0.0400735879831331); anybody (0.0264258371659704); trying (0.0254893071963349)
+    ## Cluster 40: pakistan (1); region (0.277568295734401); greet (0.0794542162865311); democratically (0.0775280534674637); fact (0.0364812153815521)
+    ## Cluster 41: terror (1); rose (0.744259979098371); said (0.346776584392684); president (0.220621908873599); make (0.0877915672479779)
+    ## Cluster 42: foreign (1); certainly (0.209676845912997); sorry (0.124248137175689); got (0.123149231138356); terrorism (0.0211685172962943)
+    ## Cluster 43: happy (1); conversation (0.181411692986489); longer (0.170103452689211)
+    ## Cluster 44: indicated (1); weeks (0.132505525664538); place (0.104873847882916); still (0.0918287959562528); just (0.0495036699443204)
+    ## Cluster 45: syria (1); anticipate (0.215051053403125); libya (0.182119421762312); friends (0.182119421762312); well (0.042874597932434)
+    ## Cluster 46: ten (1); earlier (0.778028980787231); years (0.550802881805172); took (0.428571428571429); office (0.365356164848883)
+    ## Cluster 47: iran (1); said (0.221887262127047); mullahs (0.0690796816284301); probably (0.0592997833527262); everything (0.0592997833527262); thing (0.0562586400486147); capable (0.0556691116998602); tried (0.0434875108306748)
+    ## Cluster 48: liquidate (1); said (0.137965532084574); bankruptcy (0.117256789654769); circumstances (0.0506846117528302); suggested (0.0480710692590781); nothing (0.0298719772403983)
+    ## Cluster 49: look (1); people (0.444223972703424); can (0.440009921054686); take (0.354977414280176); will (0.300573987586919)
+    ## Cluster 50: wrong (1); way (0.0799623598858537)
 
     invisible(summary(ca5))
 

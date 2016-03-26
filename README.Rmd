@@ -38,7 +38,7 @@ knitr::opts_chunk$set(fig.path = "inst/figure/")
 The general idea is that we turn the documents into a matrix of words.  After this we weight the terms by importance using [tf-idf](http://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html).  This helps the more salient words to rise to the top.  Some clustering algorithms require a similarity matrix while others require just the tf-idf weighted DocumentTermMatrices. Likewise, some algorithms require `k` terms to be specified before the model fit while others allow `k` topics to be determined after the model has been fit.  
 
 
-With algorithms that require a similarity matrix (e.g., hierarchical clustering) we apply cosine or jaccard distance measures to compare the terms (or features) of each document.  I have found cosine distance to work well with sparse matrices to produce distances metrics between the documents.  The clustering model is fit to separate the documents into clusters.  In the case of some clustering techniques (e.g., hierarchical clustering) the user then may apply k clusters to the fit, clustering documents with similar important text features.  Other techniques require that `k` be specified prior to fitting the model.  The documents can then be grouped by clusters and their accompanying salient words extracted as well.
+With algorithms that require a similarity matrix (e.g., hierarchical clustering) we apply cosine distance measures to compare the terms (or features) of each document.  I have found cosine distance to work well with sparse matrices to produce distances metrics between the documents.  The clustering model is fit to separate the documents into clusters.  In the case of some clustering techniques (e.g., hierarchical clustering) the user then may apply k clusters to the fit, clustering documents with similar important text features.  Other techniques require that `k` be specified prior to fitting the model.  The documents can then be grouped by clusters and their accompanying salient words extracted as well.
 
 # Functions
 
@@ -49,6 +49,7 @@ The main functions, task category, & descriptions are summarized in the table be
 | `data_store`           | data structure | **clustext**'s data structure (list of dtm + text)                     |
 | `hierarchical_cluster` | cluster fit    | Fits a hierarchical cluster model                                       |
 | `kmeans_cluster`       | cluster fit    | Fits a kmeans cluster model                                            |
+| `skmeans_cluster`      | cluster fit    | Fits an skmeans cluster model                                            |
 | `nfm_cluster`          | cluster fit    | Fits a non-negative matrix factorization cluster model                  |
 | `assign_cluster`       | assignment     | Assigns cluster to document/text element                                |
 | `get_text`             | extraction     | Get text from various **clustext** objects                             |
@@ -170,7 +171,7 @@ get_text(ca) %>%
 As with many topic clustering techniques, it is useful to get the to salient terms from the model.  The `get_terms` function uses the [min-max](https://en.wikipedia.org/wiki/Feature_scaling#Rescaling) scaled, [tf-idf weighted](https://en.wikipedia.org/wiki/Tf%E2%80%93idf), `DocumentTermMatrix` to extract the most frequent salient terms.  These terms can give a sense of the topic being discussed.  Notice the absence of clusters 1 & 6.  This is a result of only a single document included in each of the clusters.  The `term.cutoff` hyperparmeter sets the lower bound on the min-max scaled tf-idf to accept.  If you don't get any terms you may want to lower this or reduce `min.n`.  Likewise, these two parameters can be raised to eliminate noise.
 
 ```{r}
-get_terms(ca, .075)
+get_terms(ca)
 ```
 
 ### Clusters, Terms, and Docs Plot
@@ -180,13 +181,12 @@ Here I plot the clusters, terms, and documents (grouping variables) together as 
 ```{r, fig.width=11}
 key <- data_frame(
     cluster = 1:6,
-    labs = get_terms(ca, .085) %>%
+    labs = get_terms(ca) %>%
         bind_list("cluster") %>%
-        select(-n) %>%
+        select(-weight) %>%
         group_by(cluster) %>%
         summarize(term=paste(term, collapse=", ")) %>%
-        apply(1, paste, collapse=": ") %>%
-        c("1:", ., "6:")
+        apply(1, paste, collapse=": ")
 )
 
 ca %>%

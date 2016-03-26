@@ -20,11 +20,10 @@ nmf_cluster(x, k = k, ...)
 Returns an object of class \code{"hclust"}.
 }
 \description{
-Fit a robust non-negative matrix factorization cluster to text data via 
+Fit a robust non-negative matrix factorization cluster to text data via
 \code{\link[rNMF]{rnmf}}.  Prior to distance measures being
 calculated the tf-idf (see \code{\link[tm]{weightTfIdf}}) is applied to the
-\code{\link[tm]{DocumentTermMatrix}}.  Cosine dissimilarity is used to generate
-the distance matrix supplied to \code{\link[rNMF]{rnmf}}.
+\code{\link[tm]{DocumentTermMatrix}}.
 }
 \examples{
 library(dplyr)

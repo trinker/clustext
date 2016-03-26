@@ -6,6 +6,7 @@
 \alias{get_removed.hierarchical_cluster}
 \alias{get_removed.kmeans_cluster}
 \alias{get_removed.nmf_cluster}
+\alias{get_removed.skmeans_cluster}
 \title{Get a Text Stored in a \code{hierarchical_cluster} Object}
 \usage{
 get_removed(x, ...)
@@ -13,6 +14,8 @@ get_removed(x, ...)
 \method{get_removed}{hierarchical_cluster}(x, ...)
 
 \method{get_removed}{kmeans_cluster}(x, ...)
+
+\method{get_removed}{skmeans_cluster}(x, ...)
 
 \method{get_removed}{nmf_cluster}(x, ...)
 
