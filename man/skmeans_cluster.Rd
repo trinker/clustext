@@ -35,12 +35,12 @@ x <- with(
 
 
 ## 6 topic model
-skmeans_cluster(x, k=6)
+myfit1 <- skmeans_cluster(x, k=6)
 
-skmeans_cluster(x, k=6) \%>\%
+myfit1 \%>\%
     assign_cluster()
 
-skmeans_cluster(x, k=6) \%>\%
+myfit1 \%>\%
     assign_cluster() \%>\%
     summary()
 

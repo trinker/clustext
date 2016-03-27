@@ -21,12 +21,12 @@
 #'
 #'
 #' ## 6 topic model
-#' skmeans_cluster(x, k=6)
+#' myfit1 <- skmeans_cluster(x, k=6)
 #'
-#' skmeans_cluster(x, k=6) %>%
+#' myfit1 %>%
 #'     assign_cluster()
 #'
-#' skmeans_cluster(x, k=6) %>%
+#' myfit1 %>%
 #'     assign_cluster() %>%
 #'     summary()
 #'
@@ -54,7 +54,7 @@ skmeans_cluster <- function(x, k, ...){
 skmeans_cluster.data_store <- function(x, k, ...){
 
 
-    fit <- skmeans::skmeans(as.matrix(cosine_distance(x[["dtm"]])), k=k, ...)
+    fit <- skmeans::skmeans(x[["dtm"]], k=k, ...)
 
     text_data_store <- new.env(FALSE)
     text_data_store[["data"]] <- x
