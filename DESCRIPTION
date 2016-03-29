@@ -1,6 +1,6 @@
 Package: clustext
 Title: Consistent Clustering for Text Data
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(person("Tyler", "Rinker", email =
         "tyler.rinker@gmail.com", role = c("aut", "cre")))
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>
@@ -9,7 +9,7 @@ Depends: R (>= 3.2.3)
 Imports: dplyr, fastcluster, gofastr, graphics, mclust, rNMF, skmeans,
         slam, stats, termco, textshape, tm
 Suggests: testthat
-Date: 2016-03-26
+Date: 2016-03-28
 License: GPL-2
 LazyData: TRUE
 Roxygen: list(wrap = FALSE)

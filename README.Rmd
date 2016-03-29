@@ -56,6 +56,7 @@ The main functions, task category, & descriptions are summarized in the table be
 | `get_dtm`              | extraction     | Get `tm::DocumentTermMatrix` from various **clustext** objects         |
 | `get_removed`          | extraction     | Get removed text elements from various **clustext** objects            |
 | `get_terms`            | extraction     | Get clustered weighted important terms from an **assign_cluster** object|
+| `as_topic`             | extraction     | View `get_terms` object as topics (pretty printed important words)      |
 | `get_documents`        | extraction     | Get clustered documents from an **assign_cluster** object               |
 
 
@@ -174,6 +175,13 @@ As with many topic clustering techniques, it is useful to get the to salient ter
 get_terms(ca)
 ```
 
+Or pretty printed...
+
+```{r}
+get_terms(ca) %>%
+    as_topic()
+```
+
 ### Clusters, Terms, and Docs Plot
 
 Here I plot the clusters, terms, and documents (grouping variables) together as a combined heatmap.  This can be useful for viewing & comparing what documents are clustering together in the context of the cluster's salient terms. This example also shows how to use the cluster terms as a lookup key to extract probable salient terms for a given document.
@@ -243,6 +251,11 @@ get_text(ca2)[inds] %>%
 
 ## Get Associated Terms
 get_terms(ca2, .4)[inds]
+
+## Pretty Printed Topics
+## Get Associated Terms
+get_terms(ca2, .4) %>%
+    as_topic()
 ```
 
 

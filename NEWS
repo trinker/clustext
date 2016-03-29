@@ -17,6 +17,23 @@ And constructed with the following guidelines:
 * Bug fixes and misc changes bumps the patch
 
 
+
+clustext 0.1.0-
+----------------------------------------------------------------
+
+BUG FIXES
+
+NEW FEATURES
+
+* `as_topic` added to convert `get_terms` to more print friendly cluster-topic-terms
+  display.
+
+MINOR FEATURES
+
+IMPROVEMENTS
+
+CHANGES
+
 clustext 0.0.1
 ----------------------------------------------------------------
 

@@ -9,7 +9,7 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 Status](https://travis-ci.org/trinker/clustext.svg?branch=master)](https://travis-ci.org/trinker/clustext)
 [![Coverage
 Status](https://coveralls.io/repos/trinker/clustext/badge.svg?branch=master)](https://coveralls.io/r/trinker/clustext?branch=master)
-<a href="https://img.shields.io/badge/Version-0.0.1-orange.svg"><img src="https://img.shields.io/badge/Version-0.0.1-orange.svg" alt="Version"/></a>
+<a href="https://img.shields.io/badge/Version-0.1.0-orange.svg"><img src="https://img.shields.io/badge/Version-0.1.0-orange.svg" alt="Version"/></a>
 </p>
 <img src="inst/clustext_logo/r_clustext.png" width="150" alt="readability Logo">
 
@@ -137,6 +137,11 @@ table below:
 <td align="left">Get clustered weighted important terms from an <strong>assign_cluster</strong> object</td>
 </tr>
 <tr class="odd">
+<td align="left"><code>as_topic</code></td>
+<td align="left">extraction</td>
+<td align="left">View <code>get_terms</code> object as topics (pretty printed important words)</td>
+</tr>
+<tr class="even">
 <td align="left"><code>get_documents</code></td>
 <td align="left">extraction</td>
 <td align="left">Get clustered documents from an <strong>assign_cluster</strong> object</td>
@@ -404,6 +409,18 @@ parameters can be raised to eliminate noise.
     ## 3        stated 0.6666667
     ## 4 misperception 0.6666667
 
+Or pretty printed...
+
+    get_terms(ca) %>%
+        as_topic()
+
+    ## Cluster 2 (n=2): segment, minutes, minute
+    ## Cluster 3 (n=2): insurance, health
+    ## Cluster 4 (n=2): coal, jobs, sure, immigration, oil, issue, candy, production...
+    ## Cluster 5 (n=2): nuclear, iran, sanctions, israel, sure, region, military, troops...
+    ## Cluster 1 (n=1): mister, along, sort, unemployed
+    ## Cluster 6 (n=1): department, chu, stated, misperception
+
 ### Clusters, Terms, and Docs Plot
 
 Here I plot the clusters, terms, and documents (grouping variables)
@@ -441,7 +458,7 @@ document.
 
     ## Joining by: "cluster"
 
-![](inst/figure/unnamed-chunk-11-1.png)
+![](inst/figure/unnamed-chunk-12-1.png)
 
 ### Cluster Documents
 
@@ -488,14 +505,14 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 5.081183 secs
+    ## Time difference of 6.073497 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
     summary(ca2) %>% 
         head(12)
 
-![](inst/figure/unnamed-chunk-13-1.png)
+![](inst/figure/unnamed-chunk-14-1.png)
 
     ##    cluster count
     ## 1        2  1409
@@ -595,6 +612,112 @@ texts and terms) to a random 5 clusters for the sake of space.
     ## 1 business 1.000000
     ## 2    small 0.679014
 
+    ## Pretty Printed Topics
+    ## Get Associated Terms
+    get_terms(ca2, .4) %>%
+        as_topic()
+
+    ## Cluster 2 (n=1409): going, people, said, can, make, one, governor, get...
+    ## Cluster 25 (n=54): need, keep, thought, indict, speak, progress, trying, standard...
+    ## Cluster 15 (n=50): want, thirty, now, leave, bigger
+    ## Cluster 39 (n=46): jobs, investing
+    ## Cluster 61 (n=39): education, doubt, oil, lands, public
+    ## Cluster 36 (n=37): thousand, hundred, eighty, two
+    ## Cluster 40 (n=33): middle, class, east, certainly
+    ## Cluster 17 (n=31): israel, part, experience, united, way, states
+    ## Cluster 31 (n=29): years, four, last
+    ## Cluster 37 (n=28): tax, deductions, amount
+    ## Cluster 27 (n=25): military, maintaining, spending
+    ## Cluster 46 (n=23): important, gone, think, mistake, tough
+    ## Cluster 62 (n=23): thank, gentlemen
+    ## Cluster 10 (n=22): talk, two, minute, minutes, toss
+    ## Cluster 14 (n=21): back, medicare, come, manufacturing
+    ## Cluster 16 (n=21): right
+    ## Cluster 22 (n=21): example, chance, give, state, let
+    ## Cluster 55 (n=21): mister, president
+    ## Cluster 30 (n=20): happened, exactly
+    ## Cluster 65 (n=20): governor
+    ## Cluster 81 (n=20): china, problem, compete
+    ## Cluster 19 (n=19): economy, grows
+    ## Cluster 35 (n=19): deal, trade
+    ## Cluster 42 (n=19): percent, seven
+    ## Cluster 44 (n=19): trillion, dollar
+    ## Cluster 84 (n=19): first, year
+    ## Cluster 1 (n=18): care, health
+    ## Cluster 24 (n=18): get, jeremy, rid
+    ## Cluster 28 (n=18): got, actually
+    ## Cluster 54 (n=18): role, leadership, government, kind, shown
+    ## Cluster 70 (n=18): bush, different
+    ## Cluster 26 (n=17): respond, will, lose
+    ## Cluster 32 (n=17): future, bright, critical
+    ## Cluster 76 (n=17): energy
+    ## Cluster 34 (n=16): sure, make, job, college
+    ## Cluster 43 (n=16): taxes, cut
+    ## Cluster 13 (n=15): please, ask, repealed, quickly
+    ## Cluster 67 (n=15): war, end, iraq
+    ## Cluster 4 (n=14): one, number
+    ## Cluster 63 (n=14): grow, planning
+    ## Cluster 79 (n=14): coal
+    ## Cluster 23 (n=13): dodd, frank, repeal
+    ## Cluster 38 (n=13): three, twenty, million
+    ## Cluster 56 (n=13): question
+    ## Cluster 78 (n=13): true
+    ## Cluster 96 (n=13): iran, bomb, closer, nuclear
+    ## Cluster 21 (n=12): regulation
+    ## Cluster 47 (n=12): let
+    ## Cluster 51 (n=12): stand, principles
+    ## Cluster 69 (n=12): election, course
+    ## Cluster 72 (n=12): thank
+    ## Cluster 6 (n=11): happen
+    ## Cluster 57 (n=11): difference
+    ## Cluster 59 (n=11): happy, teachers
+    ## Cluster 74 (n=11): know
+    ## Cluster 89 (n=11): balanced, budget
+    ## Cluster 90 (n=11): business, small
+    ## Cluster 33 (n=10): romney, governor
+    ## Cluster 45 (n=10): plan
+    ## Cluster 75 (n=10): detroit, bankrupt
+    ## Cluster 77 (n=10): policies
+    ## Cluster 83 (n=10): still, speaking
+    ## Cluster 95 (n=10): policy, failure, foreign
+    ## Cluster 98 (n=10): sanctions, tighten, crippling
+    ## Cluster 7 (n=9): private
+    ## Cluster 8 (n=9): high
+    ## Cluster 66 (n=9): done
+    ## Cluster 82 (n=9): answer, straightforward
+    ## Cluster 92 (n=9): said
+    ## Cluster 100 (n=9): strong
+    ## Cluster 3 (n=8): billion, dollar, ninety, sixteen
+    ## Cluster 18 (n=8): absolutely
+    ## Cluster 41 (n=8): tell
+    ## Cluster 50 (n=8): move, along
+    ## Cluster 73 (n=8): good, night
+    ## Cluster 80 (n=8): production
+    ## Cluster 86 (n=8): create, jobs
+    ## Cluster 5 (n=7): choice
+    ## Cluster 9 (n=7): point, last, make
+    ## Cluster 49 (n=7): wrong
+    ## Cluster 53 (n=7): see
+    ## Cluster 60 (n=7): stamps, food, million
+    ## Cluster 64 (n=7): excuse, sir
+    ## Cluster 68 (n=7): bin, laden, osama
+    ## Cluster 71 (n=7): record, check
+    ## Cluster 97 (n=7): bob
+    ## Cluster 29 (n=6): believe
+    ## Cluster 85 (n=6): candy
+    ## Cluster 91 (n=6): understand
+    ## Cluster 48 (n=5): well
+    ## Cluster 58 (n=5): great
+    ## Cluster 87 (n=5): thanks
+    ## Cluster 88 (n=5): yes
+    ## Cluster 93 (n=5): lorraine
+    ## Cluster 94 (n=5): pension, looked
+    ## Cluster 11 (n=4): yeah
+    ## Cluster 12 (n=4): sorry
+    ## Cluster 20 (n=4): much, cut
+    ## Cluster 52 (n=4): time
+    ## Cluster 99 (n=4): work
+
 An Experiment
 -------------
 
@@ -619,7 +742,7 @@ Romney) and faceted n their topic use over time.
 
     plot(myfit3, 75)
 
-![](inst/figure/unnamed-chunk-14-1.png)
+![](inst/figure/unnamed-chunk-15-1.png)
 
 Can & Ozkarahan's (1990) formula indicated a `k = 259`. This umber
 seemed overly large. I used `k = 75` for the number of topics as it
@@ -658,7 +781,7 @@ the original data set easier.
 
     ## Joining by: "id_temporary"
 
-![](inst/figure/unnamed-chunk-15-1.png)
+![](inst/figure/unnamed-chunk-16-1.png)
 
 Right away we notice that not all topics are used across all three
 times. This is encouraging that the clustering is working as expected as
@@ -688,7 +811,7 @@ together.
 
     plot(myfit4, k = 80)
 
-![](inst/figure/unnamed-chunk-16-1.png)
+![](inst/figure/unnamed-chunk-17-1.png)
 
 The distribution of turns of talk looked much more dispersed across
 clusters. I used `k = 60` for the number of topics.
@@ -724,7 +847,7 @@ clusters. I used `k = 60` for the number of topics.
 
     ## Joining by: "id_temporary"
 
-![](inst/figure/unnamed-chunk-17-1.png)
+![](inst/figure/unnamed-chunk-18-1.png)
 
 The plots looked less messy and indeed topics do appear to be clustering
 around one another. I wanted to see how the primary participants, the
@@ -743,7 +866,7 @@ and Romeny and facet by participant across time.
 
     plot(myfit5, 50)
 
-![](inst/figure/unnamed-chunk-18-1.png)
+![](inst/figure/unnamed-chunk-19-1.png)
 
 Based on the dendrogram, I used `k = 50` for the number of topics.
 
@@ -779,7 +902,7 @@ Based on the dendrogram, I used `k = 50` for the number of topics.
 
     ## Joining by: "id_temporary"
 
-![](inst/figure/unnamed-chunk-19-1.png)
+![](inst/figure/unnamed-chunk-20-1.png)
 
 If you're curious about the heaviest weighted tf-idf terms in each
 cluster the next code chunk provides the top five weighted terms used in
@@ -799,19 +922,19 @@ clusters to help put the other information into perspective.
     }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
     ## Cluster 1: topic (1); separate (1); medicare (0.8)
-    ## Cluster 2: mary (1); kerry (0.9); barry (0.9); silliness (0.5); speech (0.4)
+    ## Cluster 2: mary (1); loraina (1); kerry (0.9); understand (0.5); speech (0.4)
     ## Cluster 3: sorry (1)
     ## Cluster 4: absolutely (1)
     ## Cluster 5: regulation (1); dodd (0.5); frank (0.5)
     ## Cluster 6: yes (1)
     ## Cluster 7: bob (1); let (0.9); mention (0.4)
     ## Cluster 8: matter (1); fact (0.7)
-    ## Cluster 9: gets (1); first (0.8); become (0.8); sunday (0.5); thing (0.4)
+    ## Cluster 9: gets (1); proceed (1); mark (0.7); sunday (0.5); number (0.4)
     ## Cluster 10: time (1); used (1); interrupted (0.8); issue (0.6); vitally (0.6)
     ## Cluster 11: well (1)
     ## Cluster 12: respond (1)
-    ## Cluster 13: small (1); years (0.7); three (0.5); america (0.5); back (0.4)
-    ## Cluster 14: government (1); forward (0.8); katherine (0.8); difference (0.5); young (0.5)
+    ## Cluster 13: small (1); five (1); plan (0.8); years (0.7); get (0.7); said (0.6); business (0.5); latin (0.5); year (0.5)
+    ## Cluster 14: government (1); create (1); whether (0.6); young (0.5); question (0.5)
     ## Cluster 15: company (1); will (0.6)
     ## Cluster 16: great (1)
     ## Cluster 17: role (1); leadership (1); done (0.7); get (0.4)
@@ -851,7 +974,7 @@ clusters to help put the other information into perspective.
 
     invisible(summary(ca5))
 
-![](inst/figure/unnamed-chunk-21-1.png)
+![](inst/figure/unnamed-chunk-22-1.png)
 
 It appears that in fact the topics do cluster within segments of time as
 we'd expect. This is more apparent when turn of talk is used as the unit
