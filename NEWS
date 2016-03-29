@@ -23,10 +23,18 @@ clustext 0.1.0-
 
 BUG FIXES
 
+* `join` from an `assign_cluster`'s `attributes`, now explicitly joins on (`by`)
+  `'id_temporary'`.
+
 NEW FEATURES
 
 * `as_topic` added to convert `get_terms` to more print friendly cluster-topic-terms
   display.
+  
+* `write_cluster_text` & `read_cluster_text` added to write/read cluster text for 
+  human categorization.
+  
+* `categorize` added to join original data, clusters, and human categories.
 
 MINOR FEATURES
 

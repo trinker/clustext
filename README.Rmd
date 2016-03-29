@@ -58,7 +58,9 @@ The main functions, task category, & descriptions are summarized in the table be
 | `get_terms`            | extraction     | Get clustered weighted important terms from an **assign_cluster** object|
 | `as_topic`             | extraction     | View `get_terms` object as topics (pretty printed important words)      |
 | `get_documents`        | extraction     | Get clustered documents from an **assign_cluster** object               |
-
+| `write_cluster_text`   | categorization | Write `get_text(assign_cluster(myfit))` to file for human coding        |
+| `read_cluster_text`    | categorization | Read in a human coded `write_cluster_text` file                         |
+| `categorize`           | categorization | Assign human categories and matching clusters to original data          |
 
 # Installation
 
