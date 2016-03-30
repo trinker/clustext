@@ -72,11 +72,11 @@ Functions
 The main functions, task category, & descriptions are summarized in the
 table below:
 
-<table>
+<table style="width:161%;">
 <colgroup>
-<col width="21%" />
-<col width="14%" />
-<col width="63%" />
+<col width="34%" />
+<col width="23%" />
+<col width="102%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -132,19 +132,19 @@ table below:
 <td align="left">Get removed text elements from various <strong>clustext</strong> objects</td>
 </tr>
 <tr class="even">
+<td align="left"><code>get_documents</code></td>
+<td align="left">extraction</td>
+<td align="left">Get clustered documents from an <strong>assign_cluster</strong> object</td>
+</tr>
+<tr class="odd">
 <td align="left"><code>get_terms</code></td>
 <td align="left">extraction</td>
 <td align="left">Get clustered weighted important terms from an <strong>assign_cluster</strong> object</td>
 </tr>
-<tr class="odd">
-<td align="left"><code>as_topic</code></td>
-<td align="left">extraction</td>
-<td align="left">View <code>get_terms</code> object as topics (pretty printed important words)</td>
-</tr>
 <tr class="even">
-<td align="left"><code>get_documents</code></td>
-<td align="left">extraction</td>
-<td align="left">Get clustered documents from an <strong>assign_cluster</strong> object</td>
+<td align="left"><code>as_topic</code></td>
+<td align="left">categorization</td>
+<td align="left">View <code>get_terms</code> object as topics (pretty printed important words)</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>write_cluster_text</code></td>
@@ -520,7 +520,7 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 6.072463 secs
+    ## Time difference of 7.538932 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
@@ -931,19 +931,19 @@ clusters to help put the other information into perspective.
     }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
     ## Cluster 1: topic (1); separate (1); medicare (0.8)
-    ## Cluster 2: mary (1); loraina (1); understand (0.5); silliness (0.5); speech (0.4)
+    ## Cluster 2: mary (1); understand (0.5); height (0.5); silliness (0.5); speech (0.4)
     ## Cluster 3: sorry (1)
     ## Cluster 4: absolutely (1)
     ## Cluster 5: regulation (1); dodd (0.5); frank (0.5)
     ## Cluster 6: yes (1)
     ## Cluster 7: bob (1); let (0.9); mention (0.4)
     ## Cluster 8: matter (1); fact (0.7)
-    ## Cluster 9: gets (1); proceed (1); mark (0.7); sunday (0.5); number (0.4)
-    ## Cluster 10: time (1); used (1); interrupted (0.8); issue (0.6); vitally (0.6)
+    ## Cluster 9: gets (1); mark (0.7); came (0.6); sunday (0.5); thing (0.4)
+    ## Cluster 10: time (1); interrupted (0.8); issue (0.6); vitally (0.6); bipartisan (0.5)
     ## Cluster 11: well (1)
     ## Cluster 12: respond (1)
-    ## Cluster 13: small (1); three (0.5); deductions (0.4); took (0.4); one (0.4)
-    ## Cluster 14: government (1); create (1); whether (0.6); young (0.5); question (0.5)
+    ## Cluster 13: said (0.6); business (0.5); latin (0.5); president (0.4); now (0.4)
+    ## Cluster 14: government (1); whether (0.6); difference (0.5); young (0.5); make (0.4)
     ## Cluster 15: company (1); will (0.6)
     ## Cluster 16: great (1)
     ## Cluster 17: role (1); leadership (1); done (0.7); get (0.4)
@@ -951,7 +951,7 @@ clusters to help put the other information into perspective.
     ## Cluster 19: energy (1); future (0.4)
     ## Cluster 20: yeah (1); good (0.6); thanks (0.5)
     ## Cluster 21: detroit (1); answer (0.4)
-    ## Cluster 22: oil (1); produced (0.8); coal (0.5); bunch (0.5); whole (0.4)
+    ## Cluster 22: oil (1); jobs (0.5); coal (0.5); bunch (0.5); whole (0.4)
     ## Cluster 23: federal (1); permits (0.8); licenses (0.7); waters (0.7); land (0.6)
     ## Cluster 24: true (1)
     ## Cluster 25: much (1); cut (1)
@@ -969,9 +969,9 @@ clusters to help put the other information into perspective.
     ## Cluster 37: lorraine (1)
     ## Cluster 38: pension (1); looked (0.5)
     ## Cluster 39: record (1); check (0.8); gone (0.6); often (0.5)
-    ## Cluster 40: pakistan (1); sure (0.6); afghanistan (0.5); nation (0.5); make (0.4)
-    ## Cluster 41: terror (1); act (0.9); garden (0.8); rose (0.7); spontaneous (0.4)
-    ## Cluster 42: foreign (1); troops (0.8); posture (0.7); policy (0.7); thought (0.4)
+    ## Cluster 40: pakistan (1); afghanistan (0.5); nation (0.5); number (0.4); make (0.4)
+    ## Cluster 41: terror (1); garden (0.8); rose (0.7); day (0.5); spontaneous (0.4)
+    ## Cluster 42: foreign (1); posture (0.7); policy (0.7); forces (0.5); thought (0.4)
     ## Cluster 43: happy (1)
     ## Cluster 44: indicated (1)
     ## Cluster 45: syria (1); assad (0.5); remove (0.5)
