@@ -99,7 +99,8 @@ assign_cluster.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)), h =
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
+                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') ),
+                by = 'id_temporary'
             ),
             -id_temporary
         )

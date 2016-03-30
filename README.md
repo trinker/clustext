@@ -9,7 +9,7 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 Status](https://travis-ci.org/trinker/clustext.svg?branch=master)](https://travis-ci.org/trinker/clustext)
 [![Coverage
 Status](https://coveralls.io/repos/trinker/clustext/badge.svg?branch=master)](https://coveralls.io/r/trinker/clustext?branch=master)
-<a href="https://img.shields.io/badge/Version-0.1.0-orange.svg"><img src="https://img.shields.io/badge/Version-0.1.0-orange.svg" alt="Version"/></a>
+<a href="https://img.shields.io/badge/Version-0.1.1-orange.svg"><img src="https://img.shields.io/badge/Version-0.1.1-orange.svg" alt="Version"/></a>
 </p>
 <img src="inst/clustext_logo/r_clustext.png" width="150" alt="readability Logo">
 
@@ -72,11 +72,11 @@ Functions
 The main functions, task category, & descriptions are summarized in the
 table below:
 
-<table style="width:161%;">
+<table>
 <colgroup>
-<col width="34%" />
-<col width="23%" />
-<col width="102%" />
+<col width="21%" />
+<col width="14%" />
+<col width="63%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -145,6 +145,21 @@ table below:
 <td align="left"><code>get_documents</code></td>
 <td align="left">extraction</td>
 <td align="left">Get clustered documents from an <strong>assign_cluster</strong> object</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>write_cluster_text</code></td>
+<td align="left">categorization</td>
+<td align="left">Write <code>get_text(assign_cluster(myfit))</code> to file for human coding</td>
+</tr>
+<tr class="even">
+<td align="left"><code>read_cluster_text</code></td>
+<td align="left">categorization</td>
+<td align="left">Read in a human coded <code>write_cluster_text</code> file</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>categorize</code></td>
+<td align="left">categorization</td>
+<td align="left">Assign human categories and matching clusters to original data</td>
 </tr>
 </tbody>
 </table>
@@ -505,7 +520,7 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 6.073497 secs
+    ## Time difference of 6.072463 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
@@ -779,8 +794,6 @@ the original data set easier.
                 ggplot2::facet_wrap(~time, scales='free', ncol=1) +
                 ggplot2::labs(x="Duration (words)", y="Cluster")
 
-    ## Joining by: "id_temporary"
-
 ![](inst/figure/unnamed-chunk-16-1.png)
 
 Right away we notice that not all topics are used across all three
@@ -845,8 +858,6 @@ clusters. I used `k = 60` for the number of topics.
                 ggplot2::facet_wrap(~time, scales='free', ncol=1) +
                 ggplot2::labs(x="Duration (words)", y="Cluster")
 
-    ## Joining by: "id_temporary"
-
 ![](inst/figure/unnamed-chunk-18-1.png)
 
 The plots looked less messy and indeed topics do appear to be clustering
@@ -900,8 +911,6 @@ Based on the dendrogram, I used `k = 50` for the number of topics.
                 ggplot2::facet_grid(person~time, scales='free', space='free') +
                 ggplot2::labs(x="Duration (words)", y="Cluster")
 
-    ## Joining by: "id_temporary"
-
 ![](inst/figure/unnamed-chunk-20-1.png)
 
 If you're curious about the heaviest weighted tf-idf terms in each
@@ -922,7 +931,7 @@ clusters to help put the other information into perspective.
     }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
     ## Cluster 1: topic (1); separate (1); medicare (0.8)
-    ## Cluster 2: mary (1); loraina (1); kerry (0.9); understand (0.5); speech (0.4)
+    ## Cluster 2: mary (1); loraina (1); understand (0.5); silliness (0.5); speech (0.4)
     ## Cluster 3: sorry (1)
     ## Cluster 4: absolutely (1)
     ## Cluster 5: regulation (1); dodd (0.5); frank (0.5)
@@ -933,7 +942,7 @@ clusters to help put the other information into perspective.
     ## Cluster 10: time (1); used (1); interrupted (0.8); issue (0.6); vitally (0.6)
     ## Cluster 11: well (1)
     ## Cluster 12: respond (1)
-    ## Cluster 13: small (1); five (1); plan (0.8); years (0.7); get (0.7); said (0.6); business (0.5); latin (0.5); year (0.5)
+    ## Cluster 13: small (1); three (0.5); deductions (0.4); took (0.4); one (0.4)
     ## Cluster 14: government (1); create (1); whether (0.6); young (0.5); question (0.5)
     ## Cluster 15: company (1); will (0.6)
     ## Cluster 16: great (1)
