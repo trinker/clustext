@@ -9,7 +9,7 @@ Depends: R (>= 3.2.3)
 Imports: dplyr, fastcluster, gofastr, graphics, mclust, rNMF, skmeans,
         slam, stats, termco, textshape, tm
 Suggests: testthat
-Date: 2016-03-28
+Date: 2016-03-29
 License: GPL-2
 LazyData: TRUE
 Roxygen: list(wrap = FALSE)
