@@ -6,15 +6,17 @@
 \alias{cosine_distance.TermDocumentMatrix}
 \title{Optimized Computation of Cosine Distance}
 \usage{
-cosine_distance(x)
+cosine_distance(x, ...)
 
-\method{cosine_distance}{DocumentTermMatrix}(x)
+\method{cosine_distance}{DocumentTermMatrix}(x, ...)
 
-\method{cosine_distance}{TermDocumentMatrix}(x)
+\method{cosine_distance}{TermDocumentMatrix}(x, ...)
 }
 \arguments{
 \item{x}{A data type (e.g., \code{\link[tm]{DocumentTermMatrix}} or
 \code{\link[tm]{TermDocumentMatrix}}).}
+
+\item{\ldots}{ignored.}
 }
 \value{
 Returns a cosine distance object of class \code{"dist"}.
@@ -27,7 +29,7 @@ on large sparse matrices.
 library(gofastr)
 library(dplyr)
 
-presidential_debates_2012 \%>\%
+out <- presidential_debates_2012 \%>\%
     with(q_dtm(dialogue)) \%>\%
     cosine_distance()
 }

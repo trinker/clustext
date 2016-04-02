@@ -10,6 +10,7 @@
 #' Essentially, this is a wrapper function optimized for clustering text data.
 #'
 #' @param x A data store object (see \code{\link[clustext]{data_store}}).
+#' @param distance A distance measure ("cosine" or "jaccard").
 #' @param method The agglomeration method to be used. This must be (an
 #' unambiguous abbreviation of) one of \code{"single"}, \code{"complete"},
 #' \code{"average"}, \code{"mcquitty"}, \code{"ward.D"}, \code{"ward.D2"},
@@ -50,7 +51,7 @@
 #' plot(myfit2, 55)
 #'
 #' assign_cluster(myfit2, k = 55)
-hierarchical_cluster <- function(x, method = "ward.D2", ...){
+hierarchical_cluster <- function(x, distance = 'cosine', method = "ward.D2", ...){
 
     UseMethod("hierarchical_cluster")
 
@@ -60,25 +61,14 @@ hierarchical_cluster <- function(x, method = "ward.D2", ...){
 #' @export
 #' @rdname hierarchical_cluster
 #' @method hierarchical_cluster data_store
-hierarchical_cluster.data_store <- function(x, method = "ward.D", ...){
+hierarchical_cluster.data_store <- function(x, distance = 'cosine', method = "ward.D", ...){
 
-#     removes <- slam::row_sums(x) == 0
-#     if (sum(removes) == 0){
-#         removes <- NULL
-#     } else {
-#         x <- x[!removes,]
-#     }
-
-    #mat <- proxy::dist(as.matrix(x), method="cosine")
-    #fit <- stats::hclust(mat, method = method)
-
-#     ## Convert DTM to Matrix sparse matrix
-#     Z <- Matrix::sparseMatrix(mat[["i"]], mat[["j"]], x=mat[["v"]])
-#     colnames(Z) <- colnames(mat)
-#     rownames(Z) <- rownames(mat)
-
-
-    fit <- fastcluster::hclust(cosine_distance(x[["dtm"]]), method = method)
+    distmes <- switch(distance,
+        'cosine' = cosine_distance,
+        'jaccard' = jaccard_distance,
+        stop('provide a valid `distance` type')
+    )
+    fit <- fastcluster::hclust(distmes(x[["dtm"]]), method = method)
 
     text_data_store <- new.env(FALSE)
     text_data_store[["data"]] <- x

@@ -5,12 +5,15 @@
 \alias{hierarchical_cluster.data_store}
 \title{Fit a Hierarchical Cluster}
 \usage{
-hierarchical_cluster(x, method = "ward.D2", ...)
+hierarchical_cluster(x, distance = "cosine", method = "ward.D2", ...)
 
-\method{hierarchical_cluster}{data_store}(x, method = "ward.D", ...)
+\method{hierarchical_cluster}{data_store}(x, distance = "cosine",
+  method = "ward.D", ...)
 }
 \arguments{
 \item{x}{A data store object (see \code{\link[clustext]{data_store}}).}
+
+\item{distance}{A distance measure ("cosine" or "jaccard").}
 
 \item{method}{The agglomeration method to be used. This must be (an
 unambiguous abbreviation of) one of \code{"single"}, \code{"complete"},
