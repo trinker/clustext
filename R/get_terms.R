@@ -3,7 +3,7 @@
 #' Get the terms weighted (either by tf-idf or returned from the model) and
 #' min/max scaling associated with each of the k clusters .
 #'
-#' @param x A \code{\link[hclustext]{assign_cluster}} object.
+#' @param x A \code{\link[clustext]{assign_cluster}} object.
 #' @param min.weight The lowest min/max scaled tf-idf weighting to consider
 #' as a document's salient term.
 #' @param nrow The max number of rows to display in the returned

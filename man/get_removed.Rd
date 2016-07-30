@@ -22,7 +22,7 @@ get_removed(x, ...)
 \method{get_removed}{data_store}(x, ...)
 }
 \arguments{
-\item{x}{A \code{\link[hclustext]{hierarchical_cluster}} object.}
+\item{x}{A \code{\link[clustext]{hierarchical_cluster}} object.}
 
 \item{\ldots}{ignored.}
 }
@@ -31,7 +31,7 @@ Returns a vector of text strings.
 }
 \description{
 Extract the text supplied to the
-\code{\link[hclustext]{hierarchical_cluster}} object.
+\code{\link[clustext]{hierarchical_cluster}} object.
 }
 \examples{
 library(dplyr)

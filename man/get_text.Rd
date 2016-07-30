@@ -25,7 +25,7 @@ get_text(x, ...)
 \method{get_text}{assign_cluster}(x, ...)
 }
 \arguments{
-\item{x}{A \code{\link[hclustext]{hierarchical_cluster}} object.}
+\item{x}{A \code{\link[clustext]{hierarchical_cluster}} object.}
 
 \item{\ldots}{ignored.}
 }
@@ -34,7 +34,7 @@ Returns a vector or list of text strings.
 }
 \description{
 Extract the text supplied to the
-\code{\link[hclustext]{hierarchical_cluster}} object.
+\code{\link[clustext]{hierarchical_cluster}} object.
 }
 \examples{
 library(dplyr)

@@ -10,7 +10,7 @@ get_documents(x, ...)
 \method{get_documents}{assign_cluster}(x, ...)
 }
 \arguments{
-\item{x}{A \code{\link[hclustext]{assign_cluster}} object.}
+\item{x}{A \code{\link[clustext]{assign_cluster}} object.}
 
 \item{\ldots}{ignored.}
 }

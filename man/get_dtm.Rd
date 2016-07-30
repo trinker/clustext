@@ -22,7 +22,7 @@ get_dtm(x, ...)
 \method{get_dtm}{nmf_cluster}(x, ...)
 }
 \arguments{
-\item{x}{A \code{\link[hclustext]{hierarchical_cluster}} object.}
+\item{x}{A \code{\link[clustext]{hierarchical_cluster}} object.}
 
 \item{\ldots}{ignored.}
 }
@@ -31,7 +31,7 @@ Returns a \code{\link[tm]{DocumentTermMatrix}}.
 }
 \description{
 Extract the \code{\link[tm]{DocumentTermMatrix}} supplied to/produced by a
-\code{\link[hclustext]{hierarchical_cluster}} object.
+\code{\link[clustext]{hierarchical_cluster}} object.
 }
 \examples{
 library(dplyr)

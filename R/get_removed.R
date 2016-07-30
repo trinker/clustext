@@ -1,9 +1,9 @@
 #' Get a Text Stored in a \code{hierarchical_cluster} Object
 #'
 #' Extract the text supplied to the
-#' \code{\link[hclustext]{hierarchical_cluster}} object.
+#' \code{\link[clustext]{hierarchical_cluster}} object.
 #'
-#' @param x A \code{\link[hclustext]{hierarchical_cluster}} object.
+#' @param x A \code{\link[clustext]{hierarchical_cluster}} object.
 #' @param \ldots ignored.
 #' @return Returns a vector of text strings.
 #' @export

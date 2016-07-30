@@ -2,7 +2,7 @@
 #'
 #' Get the documents associated with each of the k clusters .
 #'
-#' @param x A \code{\link[hclustext]{assign_cluster}} object.
+#' @param x A \code{\link[clustext]{assign_cluster}} object.
 #' @param \ldots ignored.
 #' @return Returns a list of \code{\link[base]{vector}}s of document names.
 #' @export

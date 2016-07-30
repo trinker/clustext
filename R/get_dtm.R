@@ -1,9 +1,9 @@
 #' Get a \code{\link[tm]{DocumentTermMatrix}} Stored in a \code{hierarchical_cluster} Object
 #'
 #' Extract the \code{\link[tm]{DocumentTermMatrix}} supplied to/produced by a
-#' \code{\link[hclustext]{hierarchical_cluster}} object.
+#' \code{\link[clustext]{hierarchical_cluster}} object.
 #'
-#' @param x A \code{\link[hclustext]{hierarchical_cluster}} object.
+#' @param x A \code{\link[clustext]{hierarchical_cluster}} object.
 #' @param \ldots ignored.
 #' @return Returns a \code{\link[tm]{DocumentTermMatrix}}.
 #' @export

@@ -23,7 +23,7 @@ get_terms(x, min.weight = 0.6, nrow = NULL, ...)
   ...)
 }
 \arguments{
-\item{x}{A \code{\link[hclustext]{assign_cluster}} object.}
+\item{x}{A \code{\link[clustext]{assign_cluster}} object.}
 
 \item{min.weight}{The lowest min/max scaled tf-idf weighting to consider
 as a document's salient term.}

@@ -31,7 +31,7 @@ calculated the tf-idf (see \code{\link[tm]{weightTfIdf}}) is applied to the
 \code{\link[tm]{DocumentTermMatrix}}.  Cosine dissimilarity is used to generate
 the distance matrix supplied to \code{\link[fastcluster]{hclust}}.  \code{method}
 defaults to \code{"ward.D2"}.  A faster cosine dissimilarity calculation is used
-under the hood (see \code{\link[hclustext]{cosine_distance}}).  Additionally,
+under the hood (see \code{\link[clustext]{cosine_distance}}).  Additionally,
 \code{\link[fastcluster]{hclust}} is used to quickly calculate the fit.
 Essentially, this is a wrapper function optimized for clustering text data.
 }

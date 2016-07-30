@@ -44,7 +44,7 @@ A data structure which stores the text, DocumentTermMatrix, and information
 regarding removed text elements which can not be handled by the
 \code{hierarchical_cluster} function.  This structure is required because it
 documents important meta information, including removed elements, required by
-other \pkg{hclustext} functions.  If the user wishes to combine documents
+other \pkg{clustext} functions.  If the user wishes to combine documents
 (say by a common grouping variable) it is recomended this be handled by
 \code{\link[textshape]{combine}} prior to using \code{data_store}.
 }
