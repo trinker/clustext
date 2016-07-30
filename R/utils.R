@@ -7,7 +7,7 @@ pn2 <- function(x) prettyNum(x, big.mark = ",", scientific = FALSE)
 
 
 # min max scaling function
-minmax_scale <- function(x) {
+min_max <- function(x) {
 	if(max(x) - min(x) == 0) return(stats::setNames(rep(1, length(x)), names(x)))
     (x - min(x))/(max(x) - min(x))
 }
