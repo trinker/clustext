@@ -20,6 +20,15 @@ get_text <- function(x, ...){
     UseMethod("get_text")
 }
 
+
+#' @export
+#' @rdname get_text
+#' @method get_text default
+get_text.default <- function(x, ...){
+    termco::get_text(x, ...)
+}
+
+
 #' @export
 #' @rdname get_text
 #' @method get_text hierarchical_cluster
