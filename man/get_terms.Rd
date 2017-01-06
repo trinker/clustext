@@ -51,7 +51,7 @@ myterms <- presidential_debates_2012 \%>\%
     get_terms()
 
 myterms
-textshape::bind_list(myterms[!sapply(myterms, is.null)], "Topic")
+textshape::tidy_list(myterms[!sapply(myterms, is.null)], "Topic")
 \dontrun{
 library(ggplot2)
 library(gridExtra)
@@ -59,7 +59,7 @@ library(dplyr)
 library(textshape)
 library(wordcloud)
 
-max.n <- max(textshape::bind_list(myterms)[["n"]])
+max.n <- max(textshape::tidy_list(myterms)[["n"]])
 
 myplots <- Map(function(x, y){
     x \%>\%

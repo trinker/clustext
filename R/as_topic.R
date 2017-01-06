@@ -55,7 +55,7 @@ as_topic.get_terms <- function(x, max.n = 8, sort = TRUE, ...){
 
     dat <- dplyr::left_join(
         summary(attributes(x)[["assignment"]], plot=FALSE),
-        textshape::bind_list(terms, "cluster", "terms"),
+        textshape::tidy_list(terms, "cluster", "terms"),
         by = 'cluster'
     )
     if (!isTRUE(sort)){

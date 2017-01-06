@@ -25,6 +25,7 @@ calculated the tf-idf (see \code{\link[tm]{weightTfIdf}}) is applied to the
 \code{\link[tm]{DocumentTermMatrix}}.
 }
 \examples{
+\dontrun{
 library(dplyr)
 
 x <- with(
@@ -52,5 +53,6 @@ assign_cluster(myfit2)
 
 assign_cluster(myfit2) \%>\%
     summary()
+}
 }
 

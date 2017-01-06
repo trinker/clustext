@@ -44,6 +44,7 @@ supplies the original data set as an argument to \code{join}
 Assign clusters to documents/text elements.
 }
 \examples{
+\dontrun{
 library(dplyr)
 
 x <- with(
@@ -90,5 +91,6 @@ summary(ca3)
 
 ## split text into clusters
 get_text(ca3)
+}
 }
 

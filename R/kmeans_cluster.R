@@ -11,6 +11,7 @@
 #' @export
 #' @rdname kmeans_cluster
 #' @examples
+#' \dontrun{
 #' library(dplyr)
 #'
 #' x <- with(
@@ -38,6 +39,7 @@
 #'
 #' assign_cluster(myfit2) %>%
 #'     summary()
+#' }
 kmeans_cluster <- function(x, k, ...){
 
     UseMethod("kmeans_cluster")

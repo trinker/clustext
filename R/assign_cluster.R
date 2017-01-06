@@ -19,6 +19,7 @@
 #' @rdname assign_cluster
 #' @export
 #' @examples
+#' \dontrun{
 #' library(dplyr)
 #'
 #' x <- with(
@@ -65,6 +66,7 @@
 #'
 #' ## split text into clusters
 #' get_text(ca3)
+#' }
 assign_cluster <- function(x, k = approx_k(get_dtm(x)), h = NULL, ...){
      UseMethod("assign_cluster")
 }
@@ -99,7 +101,7 @@ assign_cluster.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)), h =
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') ),
+                dplyr::tbl_df(textshape::tidy_vector(vect, 'id_temporary', 'cluster') ),
                 by = 'id_temporary'
             ),
             -id_temporary
@@ -133,7 +135,7 @@ assign_cluster.kmeans_cluster <- function(x, ...){
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
+                dplyr::tbl_df(textshape::tidy_vector(vect, 'id_temporary', 'cluster') )
             ),
             -id_temporary
         )
@@ -167,7 +169,7 @@ assign_cluster.skmeans_cluster <- function(x, ...){
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
+                dplyr::tbl_df(textshape::tidy_vector(vect, 'id_temporary', 'cluster') )
             ),
             -id_temporary
         )
@@ -201,7 +203,7 @@ assign_cluster.nmf_cluster <- function(x, ...){
         dplyr::select(
             dplyr::left_join(
                 dplyr::mutate(x, id_temporary = as.character(1:n())),
-                dplyr::tbl_df(textshape::bind_vector(vect, 'id_temporary', 'cluster') )
+                dplyr::tbl_df(textshape::tidy_vector(vect, 'id_temporary', 'cluster') )
             ),
             -id_temporary
         )
@@ -237,7 +239,7 @@ print.assign_cluster <- function(x, ...){
 #' @export
 summary.assign_cluster <- function(object, plot = TRUE, print = TRUE, ...){
     count <- NULL
-    out <- textshape::bind_table(table(as.integer(object)), "cluster", "count")
+    out <- textshape::tidy_table(table(as.integer(object)), "cluster", "count")
     if (isTRUE(plot)) print(termco::plot_counts(as.integer(object), item.name = "Cluster"))
     if (isTRUE(print)) dplyr::arrange(as.data.frame(out), dplyr::desc(count))
 }

@@ -23,7 +23,7 @@
 #'     get_terms()
 #'
 #' myterms
-#' textshape::bind_list(myterms[!sapply(myterms, is.null)], "Topic")
+#' textshape::tidy_list(myterms[!sapply(myterms, is.null)], "Topic")
 #' \dontrun{
 #' library(ggplot2)
 #' library(gridExtra)
@@ -31,7 +31,7 @@
 #' library(textshape)
 #' library(wordcloud)
 #'
-#' max.n <- max(textshape::bind_list(myterms)[["n"]])
+#' max.n <- max(textshape::tidy_list(myterms)[["n"]])
 #'
 #' myplots <- Map(function(x, y){
 #'     x %>%
@@ -72,7 +72,7 @@ get_terms.assign_cluster_hierarchical <- function(x, min.weight = .6, nrow = NUL
 
     out <- stats::setNames(lapply(clusters, function(y){
         vals <- min_max(sort(slam::col_sums(dat[y,]), decreasing=TRUE))
-        as.data.frame(textshape::bind_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
+        as.data.frame(textshape::tidy_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
     }), names(clusters))
 
 
@@ -117,7 +117,7 @@ get_terms.assign_cluster_kmeans <- function(x, min.weight = .6, nrow = NULL, ...
 
     out <- stats::setNames(lapply(1:nrow(x), function(i){
         vals <- min_max(sort(x[i, ], decreasing=TRUE))
-        as.data.frame(textshape::bind_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
+        as.data.frame(textshape::tidy_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
     }), nms)
 
     out2 <- lapply(out, function(x) {
@@ -155,7 +155,7 @@ get_terms.assign_cluster_skmeans <- function(x, min.weight = .6, nrow = NULL, ..
 
     out <- stats::setNames(lapply(clusters, function(y){
         vals <- min_max(sort(slam::col_sums(dat[y,]), decreasing=TRUE))
-        as.data.frame(textshape::bind_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
+        as.data.frame(textshape::tidy_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
     }), names(clusters))
 
 
@@ -195,7 +195,7 @@ get_terms.assign_cluster_nmf <- function(x, min.weight = .6, nrow = NULL, ...){
 
     out <- stats::setNames(lapply(1:nrow(x), function(i){
         vals <- min_max(sort(x[i, ], decreasing=TRUE))
-        as.data.frame(textshape::bind_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
+        as.data.frame(textshape::tidy_vector(vals, 'term', 'weight'), stringsAsFactors = FALSE)
     }), nms)
 
     out2 <- lapply(out, function(x) {
