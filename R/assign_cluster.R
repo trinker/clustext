@@ -239,7 +239,7 @@ print.assign_cluster <- function(x, ...){
 #' @export
 summary.assign_cluster <- function(object, plot = TRUE, print = TRUE, ...){
     count <- NULL
-    out <- textshape::tidy_table(table(as.integer(object)), "cluster", "count", as.tibble = FALSE)
+    out <- textshape::tidy_table(table(as.integer(object)), "cluster", "count")
     if (isTRUE(plot)) print(termco::plot_counts(as.integer(object), item.name = "Cluster"))
     if (isTRUE(print)) dplyr::arrange(as.data.frame(out), dplyr::desc(count))
 }
