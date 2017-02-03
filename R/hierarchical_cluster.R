@@ -36,6 +36,10 @@
 #' hierarchical_cluster(x) %>%
 #'     assign_cluster(h=.7)
 #'
+#' ## interactive cutting
+#' hierarchical_cluster(x) %>%
+#'     plot(h=TRUE)
+#'
 #' hierarchical_cluster(x, method="complete") %>%
 #'     plot(k=6)
 #'
@@ -90,20 +94,35 @@ hierarchical_cluster.data_store <- function(x, distance = 'cosine', method = "wa
 #' by \code{data_storage}.  Boxes are drawn around the clusters.
 #' @param h The height at which to cut the dendrograms (determines number of
 #' clusters).  If this argument is supplied \code{k} is ignored. A line is drawn
-#' showing the cut point on the dendrogram.
+#' showing the cut point on the dendrogram.  If \code{h} is set to \code{TRUE}
+#' or \code{"locator"} then the cutting becomes interactive and the height is
+#' returned invisibly.
 #' @param color The color to make the cluster boxes (\code{k}) or line (\code{h}).
+#' @param digits The number o digits to display if h\code{h} is set to
+#' interactive.
 #' @param \ldots Other arguments passed to \code{\link[stats]{rect.hclust}} or
 #' \code{\link[graphics]{abline}}.
 #' @method plot hierarchical_cluster
 #' @export
 plot.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)), h = NULL,
-    color = "red", ...){
+    color = "red", digits = 3, ...){
 
     if (is.null(h)) y <- k
     class(x) <- "hclust"
     graphics::plot(x)
     if (is.null(h) && !is.null(k)) stats::rect.hclust(x, k = y, border = color, ...)
-    if (!is.null(h)) graphics::abline(h = h, col = color, ...)
+    if (!is.null(h)) {
+        if (isTRUE(h) | h == 'locator') {
+            cat("Click a location in the plot...\n")
+            h <- locator(1)
+            cat(paste("You cut at h =", round(h[['y']], digits), "\n"))
+            graphics::abline(h = h, col = color, ...)
+            return(invisible(h[['y']]))
+        } else {
+            graphics::abline(h = h, col = color, ...)
+        }
+    }
+
 }
 
 

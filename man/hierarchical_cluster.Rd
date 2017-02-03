@@ -52,6 +52,10 @@ hierarchical_cluster(x) \%>\%
 hierarchical_cluster(x) \%>\%
     assign_cluster(h=.7)
 
+## interactive cutting
+hierarchical_cluster(x) \%>\%
+    plot(h=TRUE)
+
 hierarchical_cluster(x, method="complete") \%>\%
     plot(k=6)
 

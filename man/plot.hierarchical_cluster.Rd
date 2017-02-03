@@ -5,7 +5,7 @@
 \title{Plots a hierarchical_cluster Object}
 \usage{
 \method{plot}{hierarchical_cluster}(x, k = approx_k(get_dtm(x)), h = NULL,
-  color = "red", ...)
+  color = "red", digits = 3, ...)
 }
 \arguments{
 \item{x}{A hierarchical_cluster object.}
@@ -16,9 +16,14 @@ by \code{data_storage}.  Boxes are drawn around the clusters.}
 
 \item{h}{The height at which to cut the dendrograms (determines number of
 clusters).  If this argument is supplied \code{k} is ignored. A line is drawn
-showing the cut point on the dendrogram.}
+showing the cut point on the dendrogram.  If \code{h} is set to \code{TRUE}
+or \code{"locator"} then the cutting becomes interactive and the height is
+returned invisibly.}
 
 \item{color}{The color to make the cluster boxes (\code{k}) or line (\code{h}).}
+
+\item{digits}{The number o digits to display if h\code{h} is set to
+interactive.}
 
 \item{\ldots}{Other arguments passed to \code{\link[stats]{rect.hclust}} or
 \code{\link[graphics]{abline}}.}
