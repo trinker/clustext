@@ -52,9 +52,11 @@ hierarchical_cluster(x) \%>\%
 hierarchical_cluster(x) \%>\%
     assign_cluster(h=.7)
 
+\dontrun{
 ## interactive cutting
 hierarchical_cluster(x) \%>\%
     plot(h=TRUE)
+}
 
 hierarchical_cluster(x, method="complete") \%>\%
     plot(k=6)
@@ -71,5 +73,43 @@ plot(myfit2)
 plot(myfit2, 55)
 
 assign_cluster(myfit2, k = 55)
+
+## Example from StackOverflow Question Response
+## Asking fo grouping similar texts together
+## http://stackoverflow.com/q/22936951/1000343
+dat <- data.frame(
+    person = LETTERS[1:3],
+    text = c("Best way to waste money",
+    "Amazing stuff. lets you stay connected all the time",
+    "Instrument to waste money and time"),
+    stringsAsFactors = FALSE
+)
+
+
+x <- with(
+    dat,
+    data_store(text, person)
+)
+
+
+hierarchical_cluster(x) \%>\%
+    plot(h=.9, lwd=2)
+
+hierarchical_cluster(x) \%>\%
+    assign_cluster(h=.9)
+
+
+hierarchical_cluster(x) \%>\%
+    assign_cluster(h=.9) \%>\%
+    get_terms()
+
+hierarchical_cluster(x) \%>\%
+    assign_cluster(h=.9) \%>\%
+    get_terms() \%>\%
+    as_topic()
+
+hierarchical_cluster(x) \%>\%
+    assign_cluster(h=.9) \%>\%
+    get_documents()
 }
 
