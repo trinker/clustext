@@ -11,7 +11,7 @@
 assign_cluster(x, k = approx_k(get_dtm(x)), h = NULL, ...)
 
 \method{assign_cluster}{hierarchical_cluster}(x, k = approx_k(get_dtm(x)),
-  h = NULL, ...)
+  h = NULL, cut = "static", deepSplit = TRUE, minClusterSize = 1, ...)
 
 \method{assign_cluster}{kmeans_cluster}(x, ...)
 
@@ -28,6 +28,14 @@ by \code{data_storage}.}
 
 \item{h}{The height at which to cut the dendrograms (determines number of
 clusters).  If this argument is supplied \code{k} is ignored.}
+
+\item{cut}{The type of cut method to use for \code{hierarchical_cluster}; one
+of \code{'static'}, \code{'dynamic'} or \code{'iterative'}.}
+
+\item{deepSplit}{logical.  See \code{\link[dynamicTreeCut]{cutreeDynamic}}.}
+
+\item{minClusterSize}{The minimum cluster size.  See
+\code{\link[dynamicTreeCut]{cutreeDynamic}}.}
 
 \item{\ldots}{ignored.}
 }
@@ -71,6 +79,10 @@ x2 <- presidential_debates_2012 \%>\%
 
 ca2 <- assign_cluster(x2, k = 55)
 summary(ca2)
+
+## Dynamic cut
+ca3 <- assign_cluster(x2, cut = 'dynamic', minClusterSize = 5)
+get_text(ca3)
 
 ## add to original data
 attributes(ca2)$join(presidential_debates_2012)

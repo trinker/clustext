@@ -8,6 +8,11 @@
 #' by \code{data_storage}.
 #' @param h The height at which to cut the dendrograms (determines number of
 #' clusters).  If this argument is supplied \code{k} is ignored.
+#' @param cut The type of cut method to use for \code{hierarchical_cluster}; one
+#' of \code{'static'}, \code{'dynamic'} or \code{'iterative'}.
+#' @param deepSplit logical.  See \code{\link[dynamicTreeCut]{cutreeDynamic}}.
+#' @param minClusterSize The minimum cluster size.  See
+#' \code{\link[dynamicTreeCut]{cutreeDynamic}}.
 #' @param \ldots ignored.
 #' @return Returns an \code{assign_cluster} object; a named vector of cluster
 #' assignments with documents as names.  The object also contains the original
@@ -47,6 +52,10 @@
 #' ca2 <- assign_cluster(x2, k = 55)
 #' summary(ca2)
 #'
+#' ## Dynamic cut
+#' ca3 <- assign_cluster(x2, cut = 'dynamic', minClusterSize = 5)
+#' get_text(ca3)
+#'
 #' ## add to original data
 #' attributes(ca2)$join(presidential_debates_2012)
 #'
@@ -75,15 +84,40 @@ assign_cluster <- function(x, k = approx_k(get_dtm(x)), h = NULL, ...){
 #' @export
 #' @rdname assign_cluster
 #' @method assign_cluster hierarchical_cluster
-assign_cluster.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)), h = NULL, ...){
+assign_cluster.hierarchical_cluster <- function(x, k = approx_k(get_dtm(x)),
+    h = NULL, cut = 'static', deepSplit = TRUE, minClusterSize = 1, ...){
 
     id_temporary <- n <- NULL
 
-    if (!is.null(h)){
-        out <- stats::cutree(x, h=h)
-    } else {
-        out <- stats::cutree(x, k=k)
-    }
+
+    switch(cut,
+
+        static = {
+            if (!is.null(h)){
+                out <- stats::cutree(x, h=h)
+            } else {
+                out <- stats::cutree(x, k=k)
+            }
+        },
+        dynamic = {
+            y <- x
+            attributes(y)[['text_data_store']] <- NULL
+            class(y) <- 'hclust'
+            out <- dynamicTreeCut::cutreeDynamic(
+                dendro = y,
+                cutHeight = NULL,
+                minClusterSize = minClusterSize,
+                method = "tree",
+                deepSplit = deepSplit,
+                ...
+            )
+            names(out) <- y[['labels']]
+        },
+        iterative = {
+            stop("'iterative', method not implemented yet;\n Use \'static\' or \'dynamic\'")
+        },
+        stop('`cut` must be one of: \'static\', \'dynamic\' or \'iterative\'')
+    )
 
     orig <- attributes(x)[['text_data_store']][['data']]
     lens <- length(orig[['text']]) + length(orig[['removed']])
