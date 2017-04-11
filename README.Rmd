@@ -192,7 +192,7 @@ Here I plot the clusters, terms, and documents (grouping variables) together as 
 key <- data_frame(
     cluster = 1:6,
     labs = get_terms(ca) %>%
-        bind_list("cluster") %>%
+        tidy_list("cluster") %>%
         select(-weight) %>%
         group_by(cluster) %>%
         summarize(term=paste(term, collapse=", ")) %>%
@@ -200,10 +200,10 @@ key <- data_frame(
 )
 
 ca %>%
-    bind_vector("id", "cluster") %>%
+    tidy_vector("id", "cluster") %>%
     separate(id, c("person", "time"), sep="_") %>%
     tbl_df() %>%
-    left_join(key) %>%
+    left_join(key, by = "cluster") %>%
     mutate(n = 1) %>%
     mutate(labs = factor(labs, levels=rev(key[["labs"]]))) %>%
     unite("time_person", time, person, sep="\n") %>%

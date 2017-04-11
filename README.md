@@ -449,20 +449,18 @@ document.
     key <- data_frame(
         cluster = 1:6,
         labs = get_terms(ca) %>%
-            bind_list("cluster") %>%
+            tidy_list("cluster") %>%
             select(-weight) %>%
             group_by(cluster) %>%
             summarize(term=paste(term, collapse=", ")) %>%
             apply(1, paste, collapse=": ")
     )
 
-    ## Warning: Deprecated, use textshape::tidy_list() instead.
-
     ca %>%
-        bind_vector("id", "cluster") %>%
+        tidy_vector("id", "cluster") %>%
         separate(id, c("person", "time"), sep="_") %>%
         tbl_df() %>%
-        left_join(key) %>%
+        left_join(key, by = "cluster") %>%
         mutate(n = 1) %>%
         mutate(labs = factor(labs, levels=rev(key[["labs"]]))) %>%
         unite("time_person", time, person, sep="\n") %>%
@@ -473,10 +471,6 @@ document.
             geom_tile() +
             scale_fill_manual(values=c("grey90", "red"), guide=FALSE) +
             labs(x=NULL, y=NULL) 
-
-    ## Warning: Deprecated, use textshape::tidy_vector() instead.
-
-    ## Joining, by = "cluster"
 
 ![](tools/figure/unnamed-chunk-12-1.png)
 
@@ -525,7 +519,7 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 6.80081 secs
+    ## Time difference of 5.450191 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
@@ -941,7 +935,7 @@ clusters to help put the other information into perspective.
 
     }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
-    ## Cluster 1: going (1); want (0.8); also (0.5); world (0.5); nation (0.5); understand (0.4)
+    ## Cluster 1: going (1); time (0.6); get (0.5); years (0.5); like (0.4)
     ## Cluster 2: trillion (1); dollar (0.9); billion (0.5)
     ## Cluster 3: one (1); number (0.9)
     ## Cluster 4: get (1); private (0.7); medicare (0.5)
