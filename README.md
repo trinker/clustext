@@ -11,7 +11,8 @@ Status](https://travis-ci.org/trinker/clustext.svg?branch=master)](https://travi
 Status](https://coveralls.io/repos/trinker/clustext/badge.svg?branch=master)](https://coveralls.io/r/trinker/clustext?branch=master)
 <a href="https://img.shields.io/badge/Version-0.1.1-orange.svg"><img src="https://img.shields.io/badge/Version-0.1.1-orange.svg" alt="Version"/></a>
 </p>
-<img src="inst/clustext_logo/r_clustext.png" width="150" alt="readability Logo">
+
+![](tools/clustext_logo/r_clustext.png)
 
 **clustext** is a collection of optimized tools for clustering text data
 via various text appropriate clustering algorithms. There are many great
@@ -72,94 +73,94 @@ Functions
 The main functions, task category, & descriptions are summarized in the
 table below:
 
-<table style="width:161%;">
+<table>
 <colgroup>
-<col width="34%" />
-<col width="23%" />
-<col width="102%" />
+<col width="21%" />
+<col width="14%" />
+<col width="63%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Function</th>
-<th align="left">Category</th>
-<th align="left">Description</th>
+<th>Function</th>
+<th>Category</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>data_store</code></td>
-<td align="left">data structure</td>
-<td align="left"><strong>clustext</strong>'s data structure (list of dtm + text)</td>
+<td><code>data_store</code></td>
+<td>data structure</td>
+<td><strong>clustext</strong>'s data structure (list of dtm + text)</td>
 </tr>
 <tr class="even">
-<td align="left"><code>hierarchical_cluster</code></td>
-<td align="left">cluster fit</td>
-<td align="left">Fits a hierarchical cluster model</td>
+<td><code>hierarchical_cluster</code></td>
+<td>cluster fit</td>
+<td>Fits a hierarchical cluster model</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>kmeans_cluster</code></td>
-<td align="left">cluster fit</td>
-<td align="left">Fits a kmeans cluster model</td>
+<td><code>kmeans_cluster</code></td>
+<td>cluster fit</td>
+<td>Fits a kmeans cluster model</td>
 </tr>
 <tr class="even">
-<td align="left"><code>skmeans_cluster</code></td>
-<td align="left">cluster fit</td>
-<td align="left">Fits an skmeans cluster model</td>
+<td><code>skmeans_cluster</code></td>
+<td>cluster fit</td>
+<td>Fits an skmeans cluster model</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>nfm_cluster</code></td>
-<td align="left">cluster fit</td>
-<td align="left">Fits a non-negative matrix factorization cluster model</td>
+<td><code>nfm_cluster</code></td>
+<td>cluster fit</td>
+<td>Fits a non-negative matrix factorization cluster model</td>
 </tr>
 <tr class="even">
-<td align="left"><code>assign_cluster</code></td>
-<td align="left">assignment</td>
-<td align="left">Assigns cluster to document/text element</td>
+<td><code>assign_cluster</code></td>
+<td>assignment</td>
+<td>Assigns cluster to document/text element</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>get_text</code></td>
-<td align="left">extraction</td>
-<td align="left">Get text from various <strong>clustext</strong> objects</td>
+<td><code>get_text</code></td>
+<td>extraction</td>
+<td>Get text from various <strong>clustext</strong> objects</td>
 </tr>
 <tr class="even">
-<td align="left"><code>get_dtm</code></td>
-<td align="left">extraction</td>
-<td align="left">Get <code>tm::DocumentTermMatrix</code> from various <strong>clustext</strong> objects</td>
+<td><code>get_dtm</code></td>
+<td>extraction</td>
+<td>Get <code>tm::DocumentTermMatrix</code> from various <strong>clustext</strong> objects</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>get_removed</code></td>
-<td align="left">extraction</td>
-<td align="left">Get removed text elements from various <strong>clustext</strong> objects</td>
+<td><code>get_removed</code></td>
+<td>extraction</td>
+<td>Get removed text elements from various <strong>clustext</strong> objects</td>
 </tr>
 <tr class="even">
-<td align="left"><code>get_documents</code></td>
-<td align="left">extraction</td>
-<td align="left">Get clustered documents from an <strong>assign_cluster</strong> object</td>
+<td><code>get_documents</code></td>
+<td>extraction</td>
+<td>Get clustered documents from an <strong>assign_cluster</strong> object</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>get_terms</code></td>
-<td align="left">extraction</td>
-<td align="left">Get clustered weighted important terms from an <strong>assign_cluster</strong> object</td>
+<td><code>get_terms</code></td>
+<td>extraction</td>
+<td>Get clustered weighted important terms from an <strong>assign_cluster</strong> object</td>
 </tr>
 <tr class="even">
-<td align="left"><code>as_topic</code></td>
-<td align="left">categorization</td>
-<td align="left">View <code>get_terms</code> object as topics (pretty printed important words)</td>
+<td><code>as_topic</code></td>
+<td>categorization</td>
+<td>View <code>get_terms</code> object as topics (pretty printed important words)</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>write_cluster_text</code></td>
-<td align="left">categorization</td>
-<td align="left">Write <code>get_text(assign_cluster(myfit))</code> to file for human coding</td>
+<td><code>write_cluster_text</code></td>
+<td>categorization</td>
+<td>Write <code>get_text(assign_cluster(myfit))</code> to file for human coding</td>
 </tr>
 <tr class="even">
-<td align="left"><code>read_cluster_text</code></td>
-<td align="left">categorization</td>
-<td align="left">Read in a human coded <code>write_cluster_text</code> file</td>
+<td><code>read_cluster_text</code></td>
+<td>categorization</td>
+<td>Read in a human coded <code>write_cluster_text</code> file</td>
 </tr>
 <tr class="odd">
-<td align="left"><code>categorize</code></td>
-<td align="left">categorization</td>
-<td align="left">Assign human categories and matching clusters to original data</td>
+<td><code>categorize</code></td>
+<td>categorization</td>
+<td>Assign human categories and matching clusters to original data</td>
 </tr>
 </tbody>
 </table>
@@ -244,7 +245,7 @@ via `hierarchical_cluster`.
 
     ## 
     ## Call:
-    ## fastcluster::hclust(d = cosine_distance(x[["dtm"]]), method = method)
+    ## fastcluster::hclust(d = distmes(x[["dtm"]]), method = method)
     ## 
     ## Cluster method   : ward.D 
     ## Number of objects: 10
@@ -455,6 +456,8 @@ document.
             apply(1, paste, collapse=": ")
     )
 
+    ## Warning: Deprecated, use textshape::tidy_list() instead.
+
     ca %>%
         bind_vector("id", "cluster") %>%
         separate(id, c("person", "time"), sep="_") %>%
@@ -471,7 +474,9 @@ document.
             scale_fill_manual(values=c("grey90", "red"), guide=FALSE) +
             labs(x=NULL, y=NULL) 
 
-    ## Joining by: "cluster"
+    ## Warning: Deprecated, use textshape::tidy_vector() instead.
+
+    ## Joining, by = "cluster"
 
 ![](inst/figure/unnamed-chunk-12-1.png)
 
@@ -520,7 +525,7 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 7.538932 secs
+    ## Time difference of 7.472792 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
@@ -794,6 +799,8 @@ the original data set easier.
                 ggplot2::facet_wrap(~time, scales='free', ncol=1) +
                 ggplot2::labs(x="Duration (words)", y="Cluster")
 
+    ## Warning: Ignoring unknown aesthetics: position
+
 ![](inst/figure/unnamed-chunk-16-1.png)
 
 Right away we notice that not all topics are used across all three
@@ -858,6 +865,8 @@ clusters. I used `k = 60` for the number of topics.
                 ggplot2::facet_wrap(~time, scales='free', ncol=1) +
                 ggplot2::labs(x="Duration (words)", y="Cluster")
 
+    ## Warning: Ignoring unknown aesthetics: position
+
 ![](inst/figure/unnamed-chunk-18-1.png)
 
 The plots looked less messy and indeed topics do appear to be clustering
@@ -911,6 +920,8 @@ Based on the dendrogram, I used `k = 50` for the number of topics.
                 ggplot2::facet_grid(person~time, scales='free', space='free') +
                 ggplot2::labs(x="Duration (words)", y="Cluster")
 
+    ## Warning: Ignoring unknown aesthetics: position
+
 ![](inst/figure/unnamed-chunk-20-1.png)
 
 If you're curious about the heaviest weighted tf-idf terms in each
@@ -930,56 +941,56 @@ clusters to help put the other information into perspective.
 
     }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
-    ## Cluster 1: topic (1); separate (1); medicare (0.8)
-    ## Cluster 2: mary (1); understand (0.5); height (0.5); silliness (0.5); speech (0.4)
-    ## Cluster 3: sorry (1)
-    ## Cluster 4: absolutely (1)
-    ## Cluster 5: regulation (1); dodd (0.5); frank (0.5)
-    ## Cluster 6: yes (1)
-    ## Cluster 7: bob (1); let (0.9); mention (0.4)
-    ## Cluster 8: matter (1); fact (0.7)
-    ## Cluster 9: gets (1); mark (0.7); came (0.6); sunday (0.5); thing (0.4)
-    ## Cluster 10: time (1); interrupted (0.8); issue (0.6); vitally (0.6); bipartisan (0.5)
-    ## Cluster 11: well (1)
-    ## Cluster 12: respond (1)
-    ## Cluster 13: said (0.6); business (0.5); latin (0.5); president (0.4); now (0.4)
-    ## Cluster 14: government (1); whether (0.6); difference (0.5); young (0.5); make (0.4)
-    ## Cluster 15: company (1); will (0.6)
-    ## Cluster 16: great (1)
-    ## Cluster 17: role (1); leadership (1); done (0.7); get (0.4)
-    ## Cluster 18: damage (1); party (0.8); say (0.6)
-    ## Cluster 19: energy (1); future (0.4)
-    ## Cluster 20: yeah (1); good (0.6); thanks (0.5)
-    ## Cluster 21: detroit (1); answer (0.4)
-    ## Cluster 22: oil (1); jobs (0.5); coal (0.5); bunch (0.5); whole (0.4)
-    ## Cluster 23: federal (1); permits (0.8); licenses (0.7); waters (0.7); land (0.6)
-    ## Cluster 24: true (1)
-    ## Cluster 25: much (1); cut (1)
-    ## Cluster 26: question (1)
-    ## Cluster 27: right (1)
-    ## Cluster 28: actually (1); got (0.5)
-    ## Cluster 29: production (1)
-    ## Cluster 30: governor (1)
-    ## Cluster 31: believe (1)
-    ## Cluster 32: candy (1)
-    ## Cluster 33: balance (1); budget (0.7); spending (0.4); military (0.4)
-    ## Cluster 34: women (1)
-    ## Cluster 35: want (1); make (1); sure (0.9); timekeepers (0.7); immigration (0.6)
-    ## Cluster 36: china (1); trade (0.5); jobs (0.4)
-    ## Cluster 37: lorraine (1)
-    ## Cluster 38: pension (1); looked (0.5)
-    ## Cluster 39: record (1); check (0.8); gone (0.6); often (0.5)
-    ## Cluster 40: pakistan (1); afghanistan (0.5); nation (0.5); number (0.4); make (0.4)
-    ## Cluster 41: terror (1); garden (0.8); rose (0.7); day (0.5); spontaneous (0.4)
-    ## Cluster 42: foreign (1); posture (0.7); policy (0.7); forces (0.5); thought (0.4)
-    ## Cluster 43: happy (1)
-    ## Cluster 44: indicated (1)
-    ## Cluster 45: syria (1); assad (0.5); remove (0.5)
-    ## Cluster 46: ten (1); earlier (0.8); years (0.6); took (0.4)
-    ## Cluster 47: iran (1); nuclear (0.8); sanctions (0.7); nations (0.6); israel (0.5)
-    ## Cluster 48: liquidate (1); industry (0.5)
-    ## Cluster 49: look (1); people (0.4); can (0.4)
-    ## Cluster 50: wrong (1)
+    ## Cluster 1: going (1); want (0.8); one (0.6); take (0.5); nation (0.5)
+    ## Cluster 2: trillion (1); dollar (0.9); billion (0.5)
+    ## Cluster 3: one (1); number (0.9)
+    ## Cluster 4: get (1); private (0.7); medicare (0.5)
+    ## Cluster 5: election (1); choice (0.9)
+    ## Cluster 6: two (1); eighty (0.9); thousand (0.6); dollar (0.5); hundred (0.4)
+    ## Cluster 7: happen (1)
+    ## Cluster 8: care (1); government (0.9); keep (0.7); federal (0.6); health (0.5)
+    ## Cluster 9: war (1); high (0.9); end (0.8); iraq (0.5)
+    ## Cluster 10: good (1); forward (0.6); know (0.6)
+    ## Cluster 11: make (1); sure (0.9); point (0.7); want (0.6); last (0.5)
+    ## Cluster 12: sorry (1); china (0.9); record (0.7); talk (0.6); problem (0.5)
+    ## Cluster 13: absolutely (1)
+    ## Cluster 14: yes (1); places (0.5)
+    ## Cluster 15: let (1); respond (0.7); tell (0.7); bob (0.7); example (0.5)
+    ## Cluster 16: dodd (1); frank (1)
+    ## Cluster 17: cut (1); taxes (0.8)
+    ## Cluster 18: believe (1)
+    ## Cluster 19: three (1)
+    ## Cluster 20: jobs (1)
+    ## Cluster 21: middle (1); class (0.6); east (0.5); certainly (0.5)
+    ## Cluster 22: plan (1)
+    ## Cluster 23: well (1); first (0.7); year (0.6); posture (0.6)
+    ## Cluster 24: wrong (1)
+    ## Cluster 25: great (1); bush (0.7); different (0.6); teachers (0.6)
+    ## Cluster 26: difference (1)
+    ## Cluster 27: military (1)
+    ## Cluster 28: stamps (1); food (1); million (0.4)
+    ## Cluster 29: job (1); college (0.8); find (0.6)
+    ## Cluster 30: pension (1); mister (0.9); speaking (0.6); still (0.5); looked (0.5)
+    ## Cluster 31: business (1); grow (0.8); small (0.8); planning (0.5)
+    ## Cluster 32: done (1)
+    ## Cluster 33: thank (1)
+    ## Cluster 34: four (1); last (1); years (0.9)
+    ## Cluster 35: question (1); answer (0.8); straightforward (0.5)
+    ## Cluster 36: detroit (1); bankrupt (0.5)
+    ## Cluster 37: energy (1)
+    ## Cluster 38: percent (1); seven (0.5)
+    ## Cluster 39: right (1); course (0.6)
+    ## Cluster 40: governor (1)
+    ## Cluster 41: production (1); coal (0.9); oil (0.5); gas (0.4)
+    ## Cluster 42: true (1)
+    ## Cluster 43: candy (1)
+    ## Cluster 44: economy (1); grows (0.5)
+    ## Cluster 45: balanced (1); budget (0.9)
+    ## Cluster 46: leadership (1); kind (0.8); role (0.5); shown (0.5); show (0.5)
+    ## Cluster 47: said (1)
+    ## Cluster 48: iran (1); nuclear (0.5)
+    ## Cluster 49: work (1)
+    ## Cluster 50: strong (1)
 
     invisible(summary(ca5))
 

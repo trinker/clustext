@@ -16,7 +16,9 @@ README.R
 travis.yml
 inst/maintenance.R
 Thumb.db
-inst/clustext_logo
+tools/clustext_logo/r_clustexta.png
+tools/clustext_logo/r_clustext.pptx
+tools/clustext_logo/resize_icon.txt
 inst/staticdocs
 inst/extra_statdoc
 inst/extra_scripts

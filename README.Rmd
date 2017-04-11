@@ -31,7 +31,7 @@ knitr::opts_chunk$set(fig.path = "inst/figure/")
 [![Coverage Status](https://coveralls.io/repos/trinker/clustext/badge.svg?branch=master)](https://coveralls.io/r/trinker/clustext?branch=master)
 `r verbadge`
 
-<img src="inst/clustext_logo/r_clustext.png" width="150" alt="readability Logo">
+![](tools/clustext_logo/r_clustext.png)
 
 **clustext** is a collection of optimized tools for clustering text data via various text appropriate clustering algorithms.  There are many great R [clustering tools](https://cran.r-project.org/web/views/Cluster.html) to locate topics within documents.  I have had success with hierarchical clustering for topic extraction.  This initial success birthed the [**hclustext**](https://github.com/trinker/hclustext) package.  Additional techniques such as kmeans and non-negative matrix factorization also proved useful.  These algorithms began to be collected in a consistent manor of use in the **clustext** package.  This package wraps many of the great R tools for clustering and working with sparse matrices to aide in the workflow associated with topic extraction.
 

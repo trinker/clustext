@@ -1,0 +1,2 @@
+cd C:\Users\Tyler\GitHub\clustext\tools\clustext_logo
+ffmpeg -i r_clustexta.png -vf scale=250:-1 r_clustext.png
