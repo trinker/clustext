@@ -273,15 +273,15 @@ groups each of the candidates together at each of the debate times.
     ## 
     ## k approximated to: 5
 
-![](inst/figure/unnamed-chunk-6-1.png)
+![](tools/figure/unnamed-chunk-6-1.png)
 
     plot(myfit, k=6)
 
-![](inst/figure/unnamed-chunk-6-2.png)
+![](tools/figure/unnamed-chunk-6-2.png)
 
     plot(myfit, h = .75)
 
-![](inst/figure/unnamed-chunk-6-3.png)
+![](tools/figure/unnamed-chunk-6-3.png)
 
 Assigning Clusters
 ------------------
@@ -313,7 +313,7 @@ the document loadings on each cluster.
 
     summary(ca)
 
-![](inst/figure/unnamed-chunk-8-1.png)
+![](tools/figure/unnamed-chunk-8-1.png)
 
     ##   cluster count
     ## 1       2     2
@@ -478,7 +478,7 @@ document.
 
     ## Joining, by = "cluster"
 
-![](inst/figure/unnamed-chunk-12-1.png)
+![](tools/figure/unnamed-chunk-12-1.png)
 
 ### Cluster Documents
 
@@ -525,14 +525,14 @@ texts and terms) to a random 5 clusters for the sake of space.
 
     difftime(Sys.time(), .tic)
 
-    ## Time difference of 7.472792 secs
+    ## Time difference of 6.80081 secs
 
     ## View Document Loadings
     ca2 <- assign_cluster(myfit2, k = 100)
     summary(ca2) %>% 
         head(12)
 
-![](inst/figure/unnamed-chunk-14-1.png)
+![](tools/figure/unnamed-chunk-14-1.png)
 
     ##    cluster count
     ## 1        2  1409
@@ -762,7 +762,7 @@ Romney) and faceted n their topic use over time.
 
     plot(myfit3, 75)
 
-![](inst/figure/unnamed-chunk-15-1.png)
+![](tools/figure/unnamed-chunk-15-1.png)
 
 Can & Ozkarahan's (1990) formula indicated a `k = 259`. This umber
 seemed overly large. I used `k = 75` for the number of topics as it
@@ -801,7 +801,7 @@ the original data set easier.
 
     ## Warning: Ignoring unknown aesthetics: position
 
-![](inst/figure/unnamed-chunk-16-1.png)
+![](tools/figure/unnamed-chunk-16-1.png)
 
 Right away we notice that not all topics are used across all three
 times. This is encouraging that the clustering is working as expected as
@@ -831,7 +831,7 @@ together.
 
     plot(myfit4, k = 80)
 
-![](inst/figure/unnamed-chunk-17-1.png)
+![](tools/figure/unnamed-chunk-17-1.png)
 
 The distribution of turns of talk looked much more dispersed across
 clusters. I used `k = 60` for the number of topics.
@@ -867,7 +867,7 @@ clusters. I used `k = 60` for the number of topics.
 
     ## Warning: Ignoring unknown aesthetics: position
 
-![](inst/figure/unnamed-chunk-18-1.png)
+![](tools/figure/unnamed-chunk-18-1.png)
 
 The plots looked less messy and indeed topics do appear to be clustering
 around one another. I wanted to see how the primary participants, the
@@ -886,7 +886,7 @@ and Romeny and facet by participant across time.
 
     plot(myfit5, 50)
 
-![](inst/figure/unnamed-chunk-19-1.png)
+![](tools/figure/unnamed-chunk-19-1.png)
 
 Based on the dendrogram, I used `k = 50` for the number of topics.
 
@@ -922,7 +922,7 @@ Based on the dendrogram, I used `k = 50` for the number of topics.
 
     ## Warning: Ignoring unknown aesthetics: position
 
-![](inst/figure/unnamed-chunk-20-1.png)
+![](tools/figure/unnamed-chunk-20-1.png)
 
 If you're curious about the heaviest weighted tf-idf terms in each
 cluster the next code chunk provides the top five weighted terms used in
@@ -941,7 +941,7 @@ clusters to help put the other information into perspective.
 
     }, get_terms(ca5, .4), names(get_terms(ca5, .4))))
 
-    ## Cluster 1: going (1); want (0.8); one (0.6); take (0.5); nation (0.5)
+    ## Cluster 1: going (1); want (0.8); also (0.5); world (0.5); nation (0.5); understand (0.4)
     ## Cluster 2: trillion (1); dollar (0.9); billion (0.5)
     ## Cluster 3: one (1); number (0.9)
     ## Cluster 4: get (1); private (0.7); medicare (0.5)
@@ -994,7 +994,7 @@ clusters to help put the other information into perspective.
 
     invisible(summary(ca5))
 
-![](inst/figure/unnamed-chunk-22-1.png)
+![](tools/figure/unnamed-chunk-22-1.png)
 
 It appears that in fact the topics do cluster within segments of time as
 we'd expect. This is more apparent when turn of talk is used as the unit
