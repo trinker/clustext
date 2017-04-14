@@ -10,7 +10,7 @@ Imports: dplyr, dynamicTreeCut, fastcluster, gofastr, graphics, Matrix,
         mclust, methods, rNMF, skmeans, slam, stats, termco, textshape,
         tm
 Suggests: testthat
-Date: 2017-04-10
+Date: 2017-04-14
 License: GPL-2
 LazyData: TRUE
 Roxygen: list(wrap = FALSE)
